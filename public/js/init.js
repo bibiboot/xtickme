@@ -14,9 +14,12 @@
     var transformObject21;
     var svgElement;
     var requestAnimationFrameID; // Contains the requestAnimationFrame() object.
-    var velocity = 50;
-    var bendDirection = 1;
-    var flyDirection = 1;
+    var velocity0 = 50;
+    var velocity1 = 50;
+    var bendDirection0 = 1;
+    var bendDirection1 = 1;
+    var flyDirection0 = 1;
+    var flyDirection1 = 1;
     var walkFlag = 0;
     var MAX_X = 500;
     var MAX_Y = 320;

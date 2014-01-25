@@ -23,16 +23,16 @@
 
     function bend() {
     	if(body0.currentTheta > 90)
-    		bendDirection = -1;
+    		bendDirection0 = -1;
         // Mid point
         var cx = lthigh0.x.baseVal.value;
         var cy = lthigh0.y. baseVal.value;
-    	rotate_body(1, cx, cy, bendDirection, body0);
-    	rotate_lhand(1, cx, cy, bendDirection, lhand0);
-    	rotate_rhand(1, cx, cy, bendDirection, rhand0);
-    	rotate_head(1, cx, cy, bendDirection, head0);
+    	rotate_body(1, cx, cy, bendDirection0, body0);
+    	rotate_lhand(1, cx, cy, bendDirection0, lhand0);
+    	rotate_rhand(1, cx, cy, bendDirection0, rhand0);
+    	rotate_head(1, cx, cy, bendDirection0, head0);
     	if(body0.currentTheta == 0){
-    		bendDirection = 1;
+    		bendDirection0 = 1;
     		return;
     	}
     	requestAnimationFrameID = window.requestAnimationFrame(bend);	
@@ -40,9 +40,9 @@
     
     function fly() {
     	if(lhand0.currentTheta > 80)
-    		flyDirection = -1;
+    		flyDirection0 = -1;
     	if(lhand0.currentTheta < -20)
-    		flyDirection = 1;
+    		flyDirection0 = 1;
         var lcx = lhand0.x.baseVal.value;
         var lcy = lhand0.y. baseVal.value;
         var rcx = rhand0.x.baseVal.value;
@@ -53,11 +53,11 @@
     }
 
     function thigh_split() {
-        flyDirection = 1;
+        flyDirection0 = 1;
         var cx = lthigh0.x.baseVal.value;
         var cy = lthigh0.y. baseVal.value;
-        rotate_lthigh(1, cx, cy, flyDirection, lthigh0);
-        rotate_rthigh(-1, cx, cy, flyDirection, rthigh0);
+        rotate_lthigh(1, cx, cy, flyDirection0, lthigh0);
+        rotate_rthigh(-1, cx, cy, flyDirection0, rthigh0);
         requestAnimationFrameID = window.requestAnimationFrame(thigh_split);
     }
 
@@ -65,18 +65,18 @@
     function split(cx, cy) {
         // Joint of the thighs around which split happens
         flyDirection = 1;
-        rotate_lthigh(1, cx, cy, flyDirection, lthigh0);
-        rotate_rthigh(-1, cx, cy, flyDirection, rthigh0);
+        rotate_lthigh(1, cx, cy, flyDirection0, lthigh0);
+        rotate_rthigh(-1, cx, cy, flyDirection0, rthigh0);
         //requestAnimationFrameID = window.requestAnimationFrame(split);
     }
 
     function split_fly() {
         // Joint of the thighs around which split happens
-        flyDirection = 1;
+        flyDirection0 = 1;
         var cx = lthigh0.x.baseVal.value;
         var cy = lthigh0.y. baseVal.value;
-        rotate_lthigh(1, cx, cy, flyDirection, lthigh0);
-        rotate_rthigh(-1, cx, cy, flyDirection, rthigh0);
+        rotate_lthigh(1, cx, cy, flyDirection0, lthigh0);
+        rotate_rthigh(-1, cx, cy, flyDirection0, rthigh0);
         requestAnimationFrameID = window.requestAnimationFrame(split_fly);
     }
     
@@ -86,24 +86,24 @@
         //jump up
          if(jump_inc<20){
                  jump_inc++;
-                 velocity=400;
-                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0);
+                 velocity0=400;
+                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
                  requestAnimationFrameID = window.requestAnimationFrame(jump);}
         else if(jump_inc>19 && jump_inc<35){
                  jump_inc++;
-                 velocity=270;
-                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0);
+                 velocity0=270;
+                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
                  requestAnimationFrameID = window.requestAnimationFrame(jump);}
         //jump down
         else if(jump_inc>34 && jump_inc<55){
                  jump_inc++;
-                 velocity=-270;
-                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0);
+                 velocity0=-270;
+                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
                  requestAnimationFrameID = window.requestAnimationFrame(jump);}
         else if(jump_inc>54 && jump_inc<80){
                  jump_inc++;
-                 velocity=-320;
-                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0);
+                 velocity0=-320;
+                 move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
                  requestAnimationFrameID = window.requestAnimationFrame(jump);}
     }
 
@@ -144,14 +144,14 @@
 
     function bend_for_sorry() {
         if(body0.currentTheta < 90){
-            bendDirection = 1;
+            bendDirection0 = 1;
             // Mid point
             var cx = lthigh0.x.baseVal.value;
             var cy = lthigh0.y. baseVal.value;
-            rotate_body(1, cx, cy, bendDirection, body0)
-            rotate_lhand(1, cx, cy, bendDirection, lhand0);
-            rotate_rhand(1, cx, cy, bendDirection, rhand0);
-            rotate_head(1, cx, cy, bendDirection, head0);
+            rotate_body(1, cx, cy, bendDirection0, body0)
+            rotate_lhand(1, cx, cy, bendDirection0, lhand0);
+            rotate_rhand(1, cx, cy, bendDirection0, rhand0);
+            rotate_head(1, cx, cy, bendDirection0, head0);
             //if(body0.currentTheta == 0){
                 //bendDirection = 1;
                 //return;
@@ -162,28 +162,28 @@
 
     function bend_back_from_sorry(){
         //if(body0.currentTheta < 90){
-        bendDirection = -1;
+        bendDirection0 = -1;
         // Mid point
         var cx = lthigh0.x.baseVal.value;
         var cy = lthigh0.y. baseVal.value;
-        rotate_body(1, cx, cy, bendDirection, body0)
-        rotate_lhand(1, cx, cy, bendDirection, lhand0);
-        rotate_rhand(1, cx, cy, bendDirection, rhand0);
-        rotate_head(1, cx, cy, bendDirection, head0);
+        rotate_body(1, cx, cy, bendDirection0, body0)
+        rotate_lhand(1, cx, cy, bendDirection0, lhand0);
+        rotate_rhand(1, cx, cy, bendDirection0, rhand0);
+        rotate_head(1, cx, cy, bendDirection0, head0);
         requestAnimationFrameID = window.requestAnimationFrame(bend_for_sorry);
     }
 
     // rtong
     function on_the_knees(){
-        flyDirection = 1;
+        flyDirection0 = 1;
 
         if(i<120){
             i++;
             var cx = lthigh0.x.baseVal.value;
             var cy = lthigh0.y.baseVal.value-5*cos(body0.currentTheta);
             if(i<50)
-                rotate_lthigh(1, cx, cy, flyDirection, lthigh0);
-            rotate_rthigh(1, cx, cy, flyDirection, rthigh0);
+                rotate_lthigh(1, cx, cy, flyDirection0, lthigh0);
+            rotate_rthigh(1, cx, cy, flyDirection0, rthigh0);
         } else {
             flag=true;
         }
@@ -213,10 +213,10 @@
     // rtong
     function shocked(){
         if (i%5==0){
-            velocity=-velocity;
+            velocity0=-velocity0;
         }
-        move_body_h(head0, body0, lhand0, rhand0, lthigh, rthigh);
-        move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0); 
+        move_body_h(head0, body0, lhand0, rhand0, lthigh, rthigh, velocity0);
+        move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0); 
         i++;
         requestAnimationFrameID = window.requestAnimationFrame(shocked);
     }
@@ -226,9 +226,9 @@
     function incline(){
         if (j<30){
             move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0);
-            elocity=-velocity;
-            move_body_v();
-            velocity=-velocity;
+            elocity=-velocity0;
+            move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0); 
+            velocity0=-velocity0;
             j++;
         }
     }
@@ -255,27 +255,27 @@
     // rtong
     function lean(){
         if(body0.currentTheta > 15)
-                bendDirection = -1;
+                bendDirection0 = -1;
         // Mid point
         var cx = lthigh0.x.baseVal.value;
         var cy = lthigh0.y. baseVal.value;
-        rotate_body(1, cx, cy, bendDirection, body0)
-        rotate_lhand(1, cx, cy, bendDirection, lhand0);
-        rotate_rhand(1, cx, cy, bendDirection, rhand0);
-        rotate_head(1, cx, cy, bendDirection, head0);
+        rotate_body(1, cx, cy, bendDirection0, body0)
+        rotate_lhand(1, cx, cy, bendDirection0, lhand0);
+        rotate_rhand(1, cx, cy, bendDirection0, rhand0);
+        rotate_head(1, cx, cy, bendDirection0, head0);
         if(body0.currentTheta == 0){
-                bendDirection = 1;
+                bendDirection0 = 1;
         }
     }
 
     // rtong
     function hands_on_right() {
         if(lhand0.currentTheta > 0)
-                flyDirection = -1;
+                flyDirection0 = -1;
         if(lhand0.currentTheta < -80){
             flag=true;
         }
-        rotate_lhand(1, 0, 75, flyDirection, lhand0);
+        rotate_lhand(1, 0, 75, flyDirection0, lhand0);
     }
 
     // rtong
@@ -283,15 +283,15 @@
 
     function shake() {
         if(i<20){
-            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0);
+            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
             i++;
         } else if(i<40){
-            if(i==20) velocity=-velocity;
-            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0);
+            if(i==20) velocity0=-velocity0;
+            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
             i++;
         } else {
             i=0;
-            velocity=-velocity;
+            velocity0=-velocity0;
         }
     }
 

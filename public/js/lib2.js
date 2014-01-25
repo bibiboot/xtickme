@@ -35,7 +35,7 @@
         rthigh.transform.baseVal.getItem(0).setRotate(rthigh.currentTheta, cx, cy);
     }
 
-    function move_body_h(headx, body, lhand, rhand, lthigh, rthigh) {
+    function move_body_h(headx, body, lhand, rhand, lthigh, rthigh, velocity) {
       headx.x.baseVal.value += s2d(velocity)
 
       //try to control the body
@@ -57,7 +57,7 @@
       rthigh.y.baseVal.value += s2d(velocity)*(-sin(rthigh.currentTheta));
     }
 
-    function move_body_v(body, head, lhand, rhand, lthigh, rthigh) {
+    function move_body_v(body, head, lhand, rhand, lthigh, rthigh, velocity) {
       head.y.baseVal.value += s2d(velocity)*(-cos(body.currentTheta));
 
       //try to control the body

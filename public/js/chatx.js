@@ -15,23 +15,7 @@
      $('#uname').focus();
      //demoMatchClick();
   }
-/*
-function demoMatchClick() {
-  var value = 'hjdhf #hfdf hdjhfd';
-  var re = new RegExp('#([^#]+)[\s,;]*');
-  var m = re.exec(value);
-  if(m==null){
 
-  }
-  else {
-    var s = "Match at position " + m.index + ":\n";
-    for (i = 0; i < m.length; i++) {
-      s = s + m[i] + "\n";
-    }
-    alert(m);
-  }
-} 
-*/
   function find_keywords(data){
       return 'fuck';
   }
