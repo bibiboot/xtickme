@@ -16,10 +16,6 @@
      //demoMatchClick();
   }
 
-  function find_keywords(data){
-      return 'fuck';
-  }
-
   function draw_agent0(){
       $('#agent0').show('slow');
   }
@@ -49,14 +45,13 @@
 
     if(username == fname){
         $('#conversation').append('<b class="fname">'+username + ':</b> ' + data + '<br>');
-        var event = find_keywords(data);
-        engine(event, 1);
+        var event = get_keywords(data);
+        if(event!=-1) engine(event, 1);
     }
     else if(username!='server'){
         $('#conversation').append('<b class="sname">'+username + ':</b> ' + data + '<br>');
-        var event = find_keywords(data);
-        console.log('Second user');
-        engine(event, 2);
+        var event = get_keywords(data);
+        if(event!=-1) engine(event, 2);
     }
     else{
         $('#conversation').append('<b class="server">'+username + ':</b> ' + data + '<br>');

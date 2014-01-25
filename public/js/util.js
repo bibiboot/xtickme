@@ -35,4 +35,17 @@
       return (s / 1000) * constants.delay * Math.cos(theta_to_radian(item.currentTheta));
     }
 
+    function get_keywords(data){
+   //Extract keywords between # and space
+        var regExp = /#([^)\s]+)\s?/;
+        var matches = regExp.exec(data);
+        //matches[1] contains the value between the parentheses
+        if (matches == undefined) return -1;
+        var result = matches[1].toLowerCase();
+        //alert(JSON.stringify(result));
+        console.log(result);
+        return result;
+    }
+
+
 
