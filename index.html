@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+  <link href="css/chatx.css" type="text/css" rel="stylesheet" media="all" />
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/init.js" type="text/javascript" ></script>
+  <script src="js/util.js" type="text/javascript" ></script>
+  <script src="js/lib2.js" type="text/javascript" ></script>
+  <script src="js/test.js" type="text/javascript" ></script>
+  <script src="js/test2.js" type="text/javascript" ></script>
+  <script src="js/engine.js" type="text/javascript" ></script>
+</head>
+<body onload="javascript:load()">
+  <script src="js/chatx.js" type="text/javascript"></script>
+  <h1 id="logo">XtickMe</h1>
+ 
+  <div id="chat">
+    <!--
+    <div id="users">
+      <b>USERSX</b>
+      <div id="users"></div>
+    </div>
+    -->
+    <div id="conv">
+      <div id="conversation"></div>
+    </div>
+  </div>
+
+  <div id="board">
+    <svg id="svgElement" width="1090px" height="600px" viewBox="0 0 1090 600">
+      <defs>
+        <g id="head">
+          <circle cx="0" cy="0" r="50" class="head"/><!--Head-->
+        </g>
+        <g id="body">
+          <line x1="0" y1="0" x2="0" y2="100" class="body"/> <!--Body-->        
+          <!--<path d="M0 100 L102 150 L-102 150 L0 100" class="body"/> <!--Body-->  -->
+        </g>
+        <g id="lhand">
+          <line x1="0" y1="0" x2="-50" y2="50" class="hand"/> <!--Hand-->        
+        </g>
+        <g id="rhand">
+          <line x1="0" y1="0" x2="50" y2="50" class="hand"/> <!--Hand-->        
+        </g>
+        <g id="lthigh">
+          <line x1="0" y1="0" x2="-50" y2="50" class="thigh"/> <!--Thigh-->         
+        </g>
+        <g id="rthigh">
+          <line x1="0" y1="0" x2="50" y2="50" class="thigh"/> <!--Thigh-->         
+        </g>
+        <g id="heart">
+            <path stroke="#000000" d="m-0.11069,-17.2111c13.55357,-38.88253 66.65591,0 0,49.99149c-66.65606,-49.99149 -13.55263,-88.87401 0,-49.99149z" fill="#FF0000"/>
+        </g>
+
+      </defs>
+
+      <rect x="0" y="0" id="arena" width="100%" height="100%" rx="10" ry="10" style="fill: white; stroke: black;" />
+      <g id="coordinateFrame" transform="translate(545, 300)">
+        <!--Cordinate system-->
+        <line x1="-545" y1="0" x2="545" y2="0" class="axis" /> <!--x -axis-->
+        <line x1="0" y1="-300" x2="0" y2="300" class="axis" /> <!--y-axis-->
+        <!--<circle cx="0" cy="0" r="3" style="fill: gray;" />-->
+        <!--Cordinate system-->
+
+        <g transform="scale(1)" id="agent0">
+          <use id="head0" x="-100" y="0" xlink:href="#head" style="stroke: black; fill: white;"/>
+          <use id="body0" x="-100" y="50" xlink:href="#body" style="stroke: black; fill: black;"/>
+
+          <use id="lhand0" x="-100" y="75" xlink:href="#lhand" style="stroke: black;"/>
+          <use id="rhand0" x="-100" y="75" xlink:href="#rhand" style="stroke: black;"/>
+
+          <use id="lthigh0" x="-100" y="150" xlink:href="#lthigh"style="stroke: black;" />
+          <use id="rthigh0" x="-100" y="150" xlink:href="#rthigh" style="stroke: black;"/>
+          <use id="heart0" x="0" y="0" xlink:href="#heart" style="stroke: black;" />
+        </g>
+
+        <g transform="scale(1)" id="agent1">
+          <use id="head1" x="100" y="0" xlink:href="#head" style="stroke: black; fill: white;"/>
+          <use id="body1" x="100" y="50" xlink:href="#body" style="stroke: black; fill: black;"/>
+
+          <use id="lhand1" x="100" y="75" xlink:href="#lhand" style="stroke: black;"/>
+          <use id="rhand1" x="100" y="75" xlink:href="#rhand" style="stroke: black;"/>
+
+          <use id="lthigh1" x="100" y="150" xlink:href="#lthigh"style="stroke: black;" />
+          <use id="rthigh1" x="100" y="150" xlink:href="#rthigh" style="stroke: black;"/>
+
+        </g>
+        
+      </g>
+    </svg>
+
+  </div>
+
+  <div id="box">
+      <input type="button" id="datasend" value="send" />
+      <textarea rows="2" cols="50" id="data" class="searchbox" onfocus="true"></textarea>
+  </div>
+
+  <div id="login">
+  <input type="textbox" value="" placeholder="Enter chat name...." onfocus="true" id="uname"/>
+  <a href="javascript:add_user();" id="add_but">Add</a>
+  </div>
+  <div id="cover"></div>
+
+
+
+</body>
+</html>
