@@ -46,11 +46,14 @@ div, p, b { padding;0 margin: 0 }
      position: absolute;
      left: 24%;
      top: 52%;
-     font-size: 15px;
+     font-size: 18px;
+	 font-weight:bold;
+	 font-family:Comic Sans MS;
      /*background: url('../speech-bubble-md.png');*/
      //border: 2px solid #e65454;
      //border-radius: 16px;
      //padding: 10px;
+	 background:azure;
 }
 
 @-webkit-keyframes typing {from { width: 0; } to { width:200px; }}
