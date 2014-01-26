@@ -53,6 +53,34 @@
         requestAnimationFrameID = window.requestAnimationFrame(fly);
     }
 
+    function fly_lol() {
+                //BO
+                if(flyCount0++ < 100)
+                {
+                if(lhand0.currentTheta > 80)
+                        flyDirection0 = -1;
+                if(lhand0.currentTheta < -20)
+                        flyDirection0 = 1;
+                }
+                else
+                {
+                        if(lhand0.currentTheta > 0)
+                                flyDirection0 = -1;
+                        if(lhand0.currentTheta < 0)
+                        flyDirection0 = 1
+                        if(lhand0.currentTheta == 0)
+                        {
+                                flyDirection0 = 1;
+                                flyCount0 = 0;
+                                return;
+                        }
+                }
+                rotate_lhand(5, body0.x.baseVal.value, body0.y.baseVal.value + 25, flyDirection0, lhand0);
+        rotate_rhand(5, body0.x.baseVal.value, body0.y.baseVal.value + 25, -flyDirection0, rhand0);
+    }
+
+
+
 
     function thigh_split() {
         flyDirection0 = 1;
@@ -223,6 +251,8 @@
         requestAnimationFrameID = window.requestAnimationFrame(bend_for_sorry);
     }
 
+
+
     // rtong
     function on_the_knees(){
         flyDirection0 = 1;
@@ -255,8 +285,14 @@
     // rtong
     var scale_para=1;
     function love(){
-        heart0.transform.baseVal.getItem(0).setScale(scale_para,scale_para);
-        scale_para+=0.05;
+        if(scale_para<1.5){
+            $('#heart0').css('display', 'block');
+            heart0.transform.baseVal.getItem(0).setScale(scale_para,scale_para);
+            scale_para+=0.015;
+        } else {
+            scale_para=1;
+            $('#heart0').css('display', 'none');
+        }
         requestAnimationFrameID = window.requestAnimationFrame(love);
     }
 
@@ -265,7 +301,7 @@
         if (i%5==0){
             velocity0=-velocity0;
         }
-        move_body_h(head0, body0, lhand0, rhand0, lthigh, rthigh, velocity0);
+        move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
         move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0); 
         i++;
         requestAnimationFrameID = window.requestAnimationFrame(shocked);
@@ -275,9 +311,9 @@
     var j=0;
     function incline(){
         if (j<30){
-            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0);
-            elocity=-velocity0;
-            move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0); 
+            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
+            velocity0=-velocity0;
+            move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0); 
             velocity0=-velocity0;
             j++;
         }
@@ -296,7 +332,7 @@
             lean();
             shake();
             fuck_inc = fuck_inc + 1;
-            if(fuck_inc>1000) return;
+            if(fuck_inc>500) return;
         }
 
         requestAnimationFrameID = window.requestAnimationFrame(fuck);
@@ -325,7 +361,7 @@
         if(lhand0.currentTheta < -80){
             flag=true;
         }
-        rotate_lhand(1, 0, 75, flyDirection0, lhand0);
+        rotate_lhand(1, xOffset0, 75, flyDirection0, lhand0);
     }
 
     // rtong
@@ -344,6 +380,127 @@
             velocity0=-velocity0;
         }
     }
+
+    // rtong2
+    function wicked(){
+        $('#mouth0').css('display', 'block');
+        if(scale_para<10){
+            mouth0.transform.baseVal.getItem(0).setSkewX(scale_para);
+//            mouth0.transform.baseVal.getItem(0).setSkewY(scale_para);
+            scale_para+=0.3;
+        } else {
+            scale_para=-scale_para;
+        }
+        requestAnimationFrameID = window.requestAnimationFrame(wicked);
+    }
+
+
+    // rtong2
+    var flag_lol=1;
+    var scale_para=0.9
+    function lol(){
+        $('#mouth0').css('display', 'block');
+//        console.log(scale_para);
+        if(scale_para<1.2 && scale_para>0.8){
+            if(flag_lol==1)
+                scale_para+=0.05;
+            else if (flag_lol==-1)
+                scale_para-=0.05;
+            mouth0.transform.baseVal.getItem(0).setScale(1,scale_para);
+        } else {
+            flag_lol=-flag_lol;
+            scale_para=scale_para+0.05*flag_lol;
+        }
+        fly_lol();
+        requestAnimationFrameID = window.requestAnimationFrame(lol);
+    }
+
+// rtong2
+    var theta=0;
+    var drop=0;
+    var a=0.1;
+    function sad(){
+        $('#mouth0').css('display', 'block');
+        $('#tear0_0').css('display', 'block');
+        $('#tear1_0').css('display', 'block');
+        $('#tear2_0').css('display', 'block');
+        $('#tear3_0').css('display', 'block');
+        if(theta<6){
+            mouth0.currentTheta += theta;
+            mouth0.transform.baseVal.getItem(0).setRotate(mouth0.currentTheta, xOffset0, 25);
+            theta+=0.1;
+        }
+        if(drop>0)
+            tear0_0.y.baseVal.value+=velocity0/100+a;
+        if(drop>2)
+            tear1_0.y.baseVal.value+=velocity0/100+a;
+        if(drop>4)
+            tear2_0.y.baseVal.value+=velocity0/100+a;
+        if (drop>6)
+            tear3_0.y.baseVal.value+=velocity0/100+a;
+        if (drop>8){
+            drop=0;
+            a=0.1;
+            tear0_0.y.baseVal.value=0;
+            tear1_0.y.baseVal.value=0;
+            tear2_0.y.baseVal.value=0;
+            tear3_0.y.baseVal.value=0;
+        }
+        a+=0.1;
+        drop+=0.1;
+        requestAnimationFrameID = window.requestAnimationFrame(sad);
+    }
+
+    
+    // rtong2
+    var a1=0.1;
+    var a2=0.1;
+    var a3=0.1;
+    var a4=0.1;
+    var a5=0.1;
+    function rain(){
+        $('#rain1').css('display', 'block');
+        $('#rain2').css('display', 'block');
+        $('#rain3').css('display', 'block');
+        $('#rain4').css('display', 'block');
+        $('#rain5').css('display', 'block');
+            rain1.y.baseVal.value+=velocity0/100+a1*0.1;
+            rain2.y.baseVal.value+=velocity0/100+a2*0.2;
+            rain3.y.baseVal.value+=velocity0/100+a3*0.4;
+            rain4.y.baseVal.value+=velocity0/100+a4*0.8;
+            rain5.y.baseVal.value+=velocity0/100+a5*1.6;
+//            cloud0.x.baseVal.value+=velocity/100+a;
+        
+        if(rain1.y.baseVal.value>400){
+            a1=0;
+            rain1.y.baseVal.value=-400;
+        }
+        if(rain2.y.baseVal.value>400){
+            a2=0;
+            rain2.y.baseVal.value=-400;
+        }
+        if(rain3.y.baseVal.value>400){
+            a3=0;
+            rain3.y.baseVal.value=-400;
+        }
+        if(rain4.y.baseVal.value>400){
+            a4=0;
+            rain4.y.baseVal.value=-400;
+        }
+        if(rain5.y.baseVal.value>400){
+            a5=0;
+            rain5.y.baseVal.value=-400;
+        }
+        a1+=0.03;
+        a2+=0.03;
+        a3+=0.03;
+        a4+=0.03;
+        a5+=0.03;
+        requestAnimationFrameID = window.requestAnimationFrame(rain);
+    }
+
+
+
 
 
 //BO CHANGES

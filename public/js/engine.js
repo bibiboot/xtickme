@@ -49,6 +49,24 @@
 			sleepy_engine(user);}
 
 		//----------Kang Wang------------//
+                        else if(eventid == 'fuck'){
+            fuck_engine(user);
+        } else if(eventid == 'shocked'){
+            shocked_engine(user);
+        } else if(eventid == 'love'){
+            love_engine(user);   
+        } else if(eventid == 'suck'){
+            suck_engine(user);   
+        } else if(eventid == 'wicked'){
+//            scale_para=0;
+            wicked_engine(user);
+        } else if(eventid == 'lol'){
+            lol_engine(user);
+        } else if(eventid == 'sad'){
+            sad_engine(user);   
+        } else if(eventid == 'rain'){
+            rain_engine(user);   
+        }
 
     }
 
@@ -291,3 +309,75 @@
           } 
 
 		 } 
+
+    function fuck_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(fuck);
+        }
+        else {
+         requestAnimationFrameID = window.requestAnimationFrame(fuck2);
+        }
+    }
+
+    function shocked_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(shocked);
+        }
+        else {
+         requestAnimationFrameID = window.requestAnimationFrame(shocked2);
+        }
+    }
+
+    function love_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(love);
+        }
+        else {
+         requestAnimationFrameID = window.requestAnimationFrame(love2);
+        }
+    }
+
+    function suck_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(suck);
+        }
+        else {
+            requestAnimationFrameID = window.requestAnimationFrame(suck2);
+        }
+    }
+
+    function wicked_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(wicked);
+        }
+        else {
+            requestAnimationFrameID = window.requestAnimationFrame(wicked2);
+        }
+    }
+
+    function lol_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(lol);
+        }
+        else {
+            requestAnimationFrameID = window.requestAnimationFrame(lol2);
+        } 
+    }
+
+    function sad_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(sad);
+        }
+        else {
+            requestAnimationFrameID = window.requestAnimationFrame(sad2);
+        } 
+    }
+
+    function rain_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(rain);
+        }
+        else {
+            requestAnimationFrameID = window.requestAnimationFrame(rain_2);
+        } 
+    }

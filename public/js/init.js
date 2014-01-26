@@ -15,15 +15,34 @@
     var transformObjectQuestionMark;
     var transformObjectRing0;
     var transformObjectRing1;
+    var transformObject22;//mouth0
+    var transformObject23;//tear0_0
+    var transformObject24;//tear1_0
+    var transformObject25;//tear2_0
+    var transformObject26;//tear3_0
+    var transformObject27;//mouth1
+    var transformObject28;//tear0_1
+    var transformObject29;//tear1_1
+    var transformObject30;//tear2_1
+    var transformObject31;//tear3_1
+    var transformObject32;//rain1
+    var transformObject33;//rain2
+    var transformObject34;//rain3
+    var transformObject35;//rain4
+    var transformObject36;//rain5
+
+
+
+
 
 
         //KW
-	var transformObject20;
-	var transformObject22;
-	var transformObject23;
-	var transformObject24;
-	var transformObject25;
-	var transformObject26;
+	var transformObject20X;
+	var transformObject22X;
+	var transformObject23X;
+	var transformObject24X;
+	var transformObject25X;
+	var transformObject26X;
         //
     var svgElement;
     var requestAnimationFrameID; // Contains the requestAnimationFrame() object.
@@ -34,7 +53,10 @@
     var flyDirection0 = 1;
     var flyDirection1 = 1;
     var flyCount0 = 0;
-    var flyCount1 = 0
+    var flyCount1 = 0;
+        var xOffset0 = -100;
+    var xOffset1 = 100;
+
    //goodjob action
     var goodjobFlag = 0;            //Control the condition of hand
     var goodjobHandCount = 120;     //time for clapping. default = 120
@@ -106,11 +128,28 @@
       transformObjectRing1 = svgElement.createSVGTransform();
 
 	  transformObject20 = svgElement.createSVGTransform();
-	  transformObject22 = svgElement.createSVGTransform();
-	  transformObject23 = svgElement.createSVGTransform();
-	  transformObject24 = svgElement.createSVGTransform();
-	  transformObject25 = svgElement.createSVGTransform();
-	  transformObject26 = svgElement.createSVGTransform();
+	  transformObject22X = svgElement.createSVGTransform();
+	  transformObject23X = svgElement.createSVGTransform();
+	  transformObject24X = svgElement.createSVGTransform();
+	  transformObject25X = svgElement.createSVGTransform();
+	  transformObject26X = svgElement.createSVGTransform();
+
+      transformObject22 = svgElement.createSVGTransform();
+      transformObject23 = svgElement.createSVGTransform();
+      transformObject24 = svgElement.createSVGTransform();
+      transformObject25 = svgElement.createSVGTransform();
+      transformObject26 = svgElement.createSVGTransform();
+      transformObject27 = svgElement.createSVGTransform();
+      transformObject28 = svgElement.createSVGTransform();
+      transformObject29 = svgElement.createSVGTransform();
+      transformObject30 = svgElement.createSVGTransform();
+      transformObject31 = svgElement.createSVGTransform();
+      transformObject32 = svgElement.createSVGTransform();
+      transformObject33 = svgElement.createSVGTransform();
+      transformObject34 = svgElement.createSVGTransform();
+      transformObject35 = svgElement.createSVGTransform();
+      transformObject36 = svgElement.createSVGTransform();
+
 
     }
 
@@ -131,6 +170,23 @@
       var rthigh1 = document.getElementById("rthigh1");
 
       var heart0 = document.getElementById("heart0");
+      var mouth0 = document.getElementById("mouth0");
+      var tear0_0 = document.getElementById("tear0_0");
+      var tear1_0 = document.getElementById("tear1_0");
+      var tear2_0 = document.getElementById("tear2_0");
+      var tear3_0 = document.getElementById("tear3_0");
+      var mouth1 = document.getElementById("mouth1");
+      var tear0_1 = document.getElementById("tear0_1");
+      var tear1_1 = document.getElementById("tear1_1");
+      var tear2_1 = document.getElementById("tear2_1");
+      var tear3_1 = document.getElementById("tear3_1");
+
+      var rain1 = document.getElementById("rain1");
+      var rain2 = document.getElementById("rain2");
+      var rain3 = document.getElementById("rain3");
+      var rain4 = document.getElementById("rain4");
+      var rain5 = document.getElementById("rain5");
+
 
      //Bowen updates from heres
      var questionMark0 = document.getElementById("questionMark0");
@@ -184,10 +240,31 @@
 
 
 	  z1.transform.baseVal.appendItem(transformObject20);
-	  z2.transform.baseVal.appendItem(transformObject22);
-	  z3.transform.baseVal.appendItem(transformObject23);
-	  z4.transform.baseVal.appendItem(transformObject24);
-	  z5.transform.baseVal.appendItem(transformObject25);
-	  z6.transform.baseVal.appendItem(transformObject26);
+	  z2.transform.baseVal.appendItem(transformObject22X);
+	  z3.transform.baseVal.appendItem(transformObject23X);
+	  z4.transform.baseVal.appendItem(transformObject24X);
+	  z5.transform.baseVal.appendItem(transformObject25X);
+	  z6.transform.baseVal.appendItem(transformObject26X);
+
+        mouth0.transform.baseVal.appendItem(transformObject22);
+        mouth0.currentTheta = constants.initialTheta;
+        tear0_0.transform.baseVal.appendItem(transformObject23);
+        tear1_0.transform.baseVal.appendItem(transformObject24);
+        tear2_0.transform.baseVal.appendItem(transformObject25);
+        tear3_0.transform.baseVal.appendItem(transformObject26);
+        mouth1.transform.baseVal.appendItem(transformObject27);
+        tear0_1.transform.baseVal.appendItem(transformObject28);
+        tear1_1.transform.baseVal.appendItem(transformObject29);
+        tear2_1.transform.baseVal.appendItem(transformObject30);
+        tear3_1.transform.baseVal.appendItem(transformObject31);
+
+        rain1.transform.baseVal.appendItem(transformObject32);
+        rain2.transform.baseVal.appendItem(transformObject33);
+        rain3.transform.baseVal.appendItem(transformObject34);
+        rain4.transform.baseVal.appendItem(transformObject35);
+        rain5.transform.baseVal.appendItem(transformObject36);
+
+
+
     }
 
