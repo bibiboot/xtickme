@@ -60,7 +60,7 @@
    //goodjob action
     var goodjobFlag = 0;            //Control the condition of hand
     var goodjobHandCount = 120;     //time for clapping. default = 120
-    var goodjobDirection = 1        //1:forward to left, -1:forward to right
+    var goodjobDirection = 1;       //1:forward to left, -1:forward to right
     //i see action
     var shakeheadFlag = 1;          //Control the condition of head
     var shakeheadCount = 120;       //time for shanking. default = 120
