@@ -79,9 +79,6 @@
         rotate_rhand(5, body0.x.baseVal.value, body0.y.baseVal.value + 25, -flyDirection0, rhand0);
     }
 
-
-
-
     function thigh_split() {
         flyDirection0 = 1;
         var cx = lthigh0.x.baseVal.value;
@@ -191,7 +188,7 @@
           //adduct the hands
           else if(Hello_inc>45 && Hello_inc<90){
                   Hello_inc++;
-                  rotate_lhand(1, lcx, lcy, -1);
+                  rotate_lhand(1, lcx, lcy, -1, lhand0);
                   //rotate_lthigh(1, ltcx, ltcy, -1);
                   requestAnimationFrameID = window.requestAnimationFrame(Hello);}
           //bend body
@@ -203,7 +200,8 @@
                   requestAnimationFrameID = window.requestAnimationFrame(Hello);}
 		  else if(Hello_inc==91){
 			  resetall();
-			  resetPosition();}
+			  resetPosition();
+			  }
     }
 
     function bend_for_sorry() {

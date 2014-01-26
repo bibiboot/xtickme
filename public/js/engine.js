@@ -1,9 +1,6 @@
     function engine(eventid, user){
 
-        if(eventid == 'fuck'){
-            fuck_engine(user);
-        }
-                else if(eventid == 'bend'){
+                if(eventid == 'bend'){
                         bend_engine(user);
                 }
                 else if(eventid == 'fly'){
@@ -158,26 +155,10 @@
 
     }
 
-	
-
 	function kiss_engine(user){
-
-		if(user == 1) {
-
+			requestAnimationFrameID = window.requestAnimationFrame(love);
            requestAnimationFrameID = window.requestAnimationFrame(kiss);
-
 		   requestAnimationFrameID = window.requestAnimationFrame(kiss2);
-
-        }
-
-        else {
-
-         requestAnimationFrameID = window.requestAnimationFrame(kiss2);
-
-		 requestAnimationFrameID = window.requestAnimationFrame(kiss);
-
-        }
-
     }
 
 	
@@ -269,7 +250,7 @@
 	  function Hello_engine(user){
 
 		  if(user == 1) {
-
+			
            requestAnimationFrameID = window.requestAnimationFrame(Hello);
 
         }
