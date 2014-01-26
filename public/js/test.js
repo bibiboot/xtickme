@@ -164,7 +164,7 @@
 
 		else if(jump_inc==80){
 
-                        jump_inc=0;
+             resetall();
 			back_to_position();}
 
     }
@@ -199,8 +199,9 @@
                   lhand0.y.baseVal.value = lthigh0.y.baseVal.value - 75*sin(body0.currentTheta);
                   lhand0.x.baseVal.value = lthigh0.x.baseVal.value + 75*cos(body0.currentTheta);
                   bend();
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello);
-         }
+                  requestAnimationFrameID = window.requestAnimationFrame(Hello);}
+		  else if(Hello_inc==91){
+			  resetall();}
     }
 
     function bend_for_sorry() {
@@ -992,6 +993,8 @@
 		  bend_for_sorry();
 
 		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}
+	  else if(sorry_inc==136){
+		  resetall();}
 
 	  /*else if(sorry_inc>=136 && sorry_inc<137){
 
@@ -1055,7 +1058,7 @@
 
 			 $("#z3_0").css('display','none');
 
-			 sleepy_inc=0;
+			 resetall();
 
 		     requestAnimationFrameID = window.requestAnimationFrame(sleepy);}
 

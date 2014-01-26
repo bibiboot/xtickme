@@ -24,7 +24,254 @@
         }
         requestAnimationFrameID = window.requestAnimationFrame(bend2);
     }
+   //-------------------------------------Kang Wang--------------------------------------------//
+   var jump_inc=0;
+    function jump2(){
+        //make stickman jumo---Kang Wang
+        //jump up
+         if(jump_inc<20){
+                 jump_inc++;
+                 velocity1=400;
+                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
+                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
+        else if(jump_inc>19 && jump_inc<35){
+                 jump_inc++;
+                 velocity1=270;
+                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
+                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
+        //jump down
+        else if(jump_inc>34 && jump_inc<55){
+                 jump_inc++;
+                 velocity1=-270;
+                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
+                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
+        else if(jump_inc>54 && jump_inc<80){
+                 jump_inc++;
+                 velocity1=-320;
+                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
+                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
+		else if(jump_inc>=80 && jump_inc<81){
+			resetall();
+			back_to_position2();}
+    }
 
+
+   var Hello_inc=0;
+    function Hello2(){
+        //Action bye-bye----Kang Wang
+          var ltcx = lthigh1.x.baseVal.value;
+          var ltcy = lthigh1.y.baseVal.value;
+          var rtcx = rthigh1.x.baseVal.value;
+          var rtcy = rthigh1.y.baseVal.value;
+          var lcx = lhand1.x.baseVal.value;
+          var lcy = lhand1.y. baseVal.value;
+          var rcx = rhand1.x.baseVal.value;
+          var rcy = rhand1.y. baseVal.value;
+          //adduct the feet
+          if(Hello_inc<=45){
+                  Hello_inc++;
+                  //rotate_lhand(1, lcx, lcy, -1, lhand1);
+				  rotate_rhand(1, lcx, lcy, 1, rhand1);
+                  rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+                  rotate_rthigh(-1, rtcx, rtcy, -1, rthigh1);
+                  requestAnimationFrameID = window.requestAnimationFrame(Hello2);}
+          //adduct the hands
+          else if(Hello_inc>45 && Hello_inc<90){
+                  Hello_inc++;
+				  rotate_rhand(1, lcx, lcy, 1, rhand1);
+                  //rotate_lhand(1, lcx, lcy, -1, lhand1);
+                  //rotate_lthigh(1, ltcx, ltcy, -1);
+                  requestAnimationFrameID = window.requestAnimationFrame(Hello2);}
+          //bend body
+          else if(Hello_inc>=90 && Hello_inc<91){
+                  Hello_inc++;
+                  rhand1.y.baseVal.value = lthigh1.y.baseVal.value + 75*sin(body1.currentTheta);
+                  rhand1.x.baseVal.value = lthigh1.x.baseVal.value - 75*cos(body1.currentTheta);
+                  bend2();
+                  requestAnimationFrameID = window.requestAnimationFrame(Hello2);}
+		  else if(Hello_inc==91){
+			      resetall();}
+    }
+	
+	function bend_for_sorry2() {
+        if(body1.currentTheta < -90){
+            bendDirection1 = -1;
+            return ;
+           }
+            // Mid point
+            var cx = lthigh1.x.baseVal.value;
+            var cy = lthigh1.y. baseVal.value;
+            rotate_body(1, cx, cy, bendDirection1, body1)
+            rotate_lhand(1, cx, cy, bendDirection1, lhand1);
+            rotate_rhand(1, cx, cy, bendDirection1, rhand1);
+            rotate_head(1, cx, cy, bendDirection1, head1);
+            //if(body1.currentTheta == 0){
+                //bendDirection1 = 1;
+                //return;
+            //}
+            requestAnimationFrameID = window.requestAnimationFrame(bend_for_sorry2);
+    }
+	
+		 var sleepy_inc=0;
+
+	 function sleepy2(){
+
+     //Action: sleepy----Kang Wang		 
+
+	   if(sleepy_inc>=0 && sleepy_inc<30){
+
+		   sleepy_inc++;
+
+		   requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+		 else if(sleepy_inc>=30 && sleepy_inc<70){
+
+			 sleepy_inc++;
+
+			 $("#z1_1").css('display','block');
+
+			 console.log("work!");
+
+			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+		 else if(sleepy_inc>=70 && sleepy_inc<110){
+
+			 sleepy_inc++;
+
+			 //$("#z1_0").css('display','none');
+
+			 $("#z2_1").css('display','block');
+
+			 console.log("work2!");
+
+			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+		 else if(sleepy_inc>=110 && sleepy_inc<150){
+
+			 sleepy_inc++;
+
+			 $("#z3_1").css('display','block');
+
+			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+	     else if(sleepy_inc==150){
+
+			 $("#z1_1").css('display','none');
+
+			 $("#z2_1").css('display','none');
+
+			 $("#z3_1").css('display','none');
+
+			 resetall();
+
+		     requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+	 }
+
+	 
+
+	 function stop_sleepy(){
+
+		 sleepy_inc=-1;}
+
+		 
+
+	function back_to_position2(){
+
+		 head1.x.baseVal.value=head1_x; head1.y.baseVal.value=head1_y;
+
+		 body1.x.baseVal.value=body1_x; body1.y.baseVal.value=body1_y;
+
+		 lhand1.x.baseVal.value=lhand1_x; lhand1.y.baseVal.value=lhand1_y;
+
+		 rhand1.x.baseVal.value=rhand1_x; rhand1.y.baseVal.value=rhand1_y;
+
+		 lthigh1.x.baseVal.value=lthigh1_x; lthigh1.y.baseVal.value=lthigh1_y;
+
+		 rthigh1.x.baseVal.value=rthigh1_x; rthigh1.y.baseVal.value=rthigh1_y;
+
+		 }
+	var sorry_inc=0;
+
+	function sorry2(){
+
+	//Action: Sorry----Kang Wang
+
+	  var ltcx = lthigh1.x.baseVal.value;
+
+      var ltcy = lthigh1.y.baseVal.value;
+
+	  var rtcx = rthigh1.x.baseVal.value;
+
+	  var rtcy = rthigh1.y.baseVal.value;
+
+	  var lcx = lhand1.x.baseVal.value;
+
+      var lcy = lhand1.y. baseVal.value;
+
+      var rcx = rhand1.x.baseVal.value;
+
+      var rcy = rhand1.y. baseVal.value;
+
+	  if(sorry_inc<45){
+
+		  sorry_inc++;
+
+		  rotate_lhand(1, lcx, lcy, -1, lhand1);
+
+		  rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+
+		  rotate_rthigh(1, rtcx, rtcy, 1, rthigh1);
+
+		  //rotate_rthigh(1, rtcx, rtcy, 1, rthigh1);
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  else if(sorry_inc>=45 && sorry_inc<90){
+
+		   sorry_inc++;
+
+		   //rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+
+		   rotate_lhand(1, lcx, lcy, -1, lhand1);
+
+		   //rotate_rthigh(1, rtcx, rtcy, -1, rthigh1);
+
+		   requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  else if(sorry_inc>=90 && sorry_inc<135){
+
+		  sorry_inc++;
+
+		  //rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  else if(sorry_inc>=135 && sorry_inc<136){
+
+		  sorry_inc++;
+
+		  lhand1.y.baseVal.value = lthigh1.y.baseVal.value - 75*sin(body0.currentTheta);
+
+          lhand1.x.baseVal.value = lthigh1.x.baseVal.value + 75*cos(body0.currentTheta)+10;
+
+		  bend_for_sorry2();
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+	  else if(sorry_inc==136){
+		 resetall();}
+
+	  /*else if(sorry_inc>=136 && sorry_inc<137){
+
+		  sorry_inc++;
+
+		  back_from_sorry();
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}*/
+
+	  }
+
+   //-------------------------------------Kang Wang--------------------------------------------//
     function fly2() {
         //BO
         if(flyCount1++ < 100)
@@ -110,104 +357,6 @@
         requestAnimationFrameID = window.requestAnimationFrame(split_fly2);
     }
     
-
-var jump_inc=0;
-    function jump2(){
-        //make stickman jumo---Kang Wang
-        //jump up
-         if(jump_inc<20){
-                 jump_inc++;
-                 velocity1=400;
-                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
-                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
-        else if(jump_inc>19 && jump_inc<35){
-                 jump_inc++;
-                 velocity1=270;
-                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
-                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
-        //jump down
-        else if(jump_inc>34 && jump_inc<55){
-                 jump_inc++;
-                 velocity1=-270;
-                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
-                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
-        else if(jump_inc>54 && jump_inc<80){
-                 jump_inc++;
-                 velocity1=-320;
-                 move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
-                 requestAnimationFrameID = window.requestAnimationFrame(jump2);}
-		else if(jump_inc>=80 && jump_inc<81){
-			back_to_position2();}
-    }
-
-
-    var Hello_inc=0;
-    function Hello2(){
-        //Action bye-bye----Kang Wang
-          var ltcx = lthigh1.x.baseVal.value;
-          var ltcy = lthigh1.y.baseVal.value;
-          var rtcx = rthigh1.x.baseVal.value;
-          var rtcy = rthigh1.y.baseVal.value;
-          var lcx = lhand1.x.baseVal.value;
-          var lcy = lhand1.y. baseVal.value;
-          var rcx = rhand1.x.baseVal.value;
-          var rcy = rhand1.y. baseVal.value;
-          //adduct the feet
-          if(Hello_inc<=45){
-                  Hello_inc++;
-                  rotate_lhand(1, lcx, lcy, -1, lhand1);
-                  rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
-                  rotate_rthigh(-1, rtcx, rtcy, -1, rthigh1);
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello2);}
-          //adduct the hands
-          else if(Hello_inc>45 && Hello_inc<90){
-                  Hello_inc++;
-                  rotate_lhand(1, lcx, lcy, -1);
-                  //rotate_lthigh(1, ltcx, ltcy, -1);
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello2);}
-          //bend body
-          else if(Hello_inc>=90 && Hello_inc<91){
-                  Hello_inc++;
-                  lhand1.y.baseVal.value = lthigh1.y.baseVal.value - 75*sin(body1.currentTheta);
-                  lhand1.x.baseVal.value = lthigh1.x.baseVal.value + 75*cos(body1.currentTheta);
-                  bend();
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello2);
-         }
-    }
-
-    function bend_for_sorry2() {
-        if(body1.currentTheta < -90){
-            bendDirection1 = -1;
-            return ;
-           }
-            // Mid point
-            var cx = lthigh1.x.baseVal.value;
-            var cy = lthigh1.y. baseVal.value;
-            rotate_body(1, cx, cy, bendDirection1, body1)
-            rotate_lhand(1, cx, cy, bendDirection1, lhand1);
-            rotate_rhand(1, cx, cy, bendDirection1, rhand1);
-            rotate_head(1, cx, cy, bendDirection1, head1);
-            //if(body1.currentTheta == 0){
-                //bendDirection1 = 1;
-                //return;
-            //}
-            requestAnimationFrameID = window.requestAnimationFrame(bend_for_sorry2);
-    }
-
-    function bend_back_from_sorry2(){
-        //if(body1.currentTheta < 90){
-        bendDirection1 = -1;
-        // Mid point
-        var cx = lthigh1.x.baseVal.value;
-        var cy = lthigh1.y. baseVal.value;
-        rotate_body(1, cx, cy, bendDirection1, body1)
-        rotate_lhand(1, cx, cy, bendDirection1, lhand1);
-        rotate_rhand(1, cx, cy, bendDirection1, rhand1);
-        rotate_head(1, cx, cy, bendDirection1, head1);
-        requestAnimationFrameID = window.requestAnimationFrame(bend_for_sorry2);
-    }
-
-
 
     // rtong
     function on_the_knees2(){
@@ -875,163 +1024,4 @@ var jump_inc=0;
     	requestAnimationFrameID = window.requestAnimationFrame(walk2);
 
     }
-
-	 var sleepy_inc=0;
-
-	 function sleepy2(){
-
-     //Action: sleepy----Kang Wang		 
-
-	   if(sleepy_inc>=0 && sleepy_inc<30){
-
-		   sleepy_inc++;
-
-		   requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
-
-		 else if(sleepy_inc>=30 && sleepy_inc<70){
-
-			 sleepy_inc++;
-
-			 $("#z1_1").css('display','block');
-
-			 console.log("work!");
-
-			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
-
-		 else if(sleepy_inc>=70 && sleepy_inc<110){
-
-			 sleepy_inc++;
-
-			 //$("#z1_0").css('display','none');
-
-			 $("#z2_1").css('display','block');
-
-			 console.log("work2!");
-
-			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
-
-		 else if(sleepy_inc>=110 && sleepy_inc<150){
-
-			 sleepy_inc++;
-
-			 $("#z3_1").css('display','block');
-
-			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
-
-	     else if(sleepy_inc==150){
-
-			 $("#z1_1").css('display','none');
-
-			 $("#z2_1").css('display','none');
-
-			 $("#z3_1").css('display','none');
-
-			 sleepy_inc=0;
-
-		     requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
-
-	 }
-
-	 
-
-	 function stop_sleepy(){
-
-		 sleepy_inc=-1;}
-
-		 
-
-	function back_to_position2(){
-
-		 head1.x.baseVal.value=head1_x; head1.y.baseVal.value=head1_y;
-
-		 body1.x.baseVal.value=body1_x; body1.y.baseVal.value=body1_y;
-
-		 lhand1.x.baseVal.value=lhand1_x; lhand1.y.baseVal.value=lhand1_y;
-
-		 rhand1.x.baseVal.value=rhand1_x; rhand1.y.baseVal.value=rhand1_y;
-
-		 lthigh1.x.baseVal.value=lthigh1_x; lthigh1.y.baseVal.value=lthigh1_y;
-
-		 rthigh1.x.baseVal.value=rthigh1_x; rthigh1.y.baseVal.value=rthigh1_y;
-
-		 }
-
-	var sorry_inc=0;
-
-	function sorry2(){
-
-	//Action: Sorry----Kang Wang
-
-	  var ltcx = lthigh1.x.baseVal.value;
-
-      var ltcy = lthigh1.y.baseVal.value;
-
-	  var rtcx = rthigh1.x.baseVal.value;
-
-	  var rtcy = rthigh1.y.baseVal.value;
-
-	  var lcx = lhand1.x.baseVal.value;
-
-      var lcy = lhand1.y. baseVal.value;
-
-      var rcx = rhand1.x.baseVal.value;
-
-      var rcy = rhand1.y. baseVal.value;
-
-	  if(sorry_inc<45){
-
-		  sorry_inc++;
-
-		  rotate_lhand(1, lcx, lcy, -1, lhand1);
-
-		  rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
-
-		  rotate_rthigh(1, rtcx, rtcy, 1, rthigh1);
-
-		  //rotate_rthigh(1, rtcx, rtcy, 1, rthigh1);
-
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
-
-	  else if(sorry_inc>=45 && sorry_inc<90){
-
-		   sorry_inc++;
-
-		   //rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
-
-		   rotate_lhand(1, lcx, lcy, -1, lhand1);
-
-		   //rotate_rthigh(1, rtcx, rtcy, -1, rthigh1);
-
-		   requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
-
-	  else if(sorry_inc>=90 && sorry_inc<135){
-
-		  sorry_inc++;
-
-		  //rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
-
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
-
-	  else if(sorry_inc>=135 && sorry_inc<136){
-
-		  sorry_inc++;
-
-		  lhand1.y.baseVal.value = lthigh1.y.baseVal.value - 75*sin(body0.currentTheta);
-
-          lhand1.x.baseVal.value = lthigh1.x.baseVal.value + 75*cos(body0.currentTheta)+10;
-
-		  bend_for_sorry2();
-
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
-
-	  /*else if(sorry_inc>=136 && sorry_inc<137){
-
-		  sorry_inc++;
-
-		  back_from_sorry();
-
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}*/
-
-	  }
-
 
