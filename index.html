@@ -32,21 +32,6 @@
     <svg id="svgElement" width="1090px" height="600px" viewBox="0 0 1090 600">
       <defs>
       
-      <!--Lovely Sun-->     
-        <g id="sun">
-        <polygon points="425,-320  360,-270  435,-275"
-         style="stroke: none; fill: #FFFF00;"/>
-        <polygon points="435,-275  380,-220  470,-240"
-         style="stroke: none; fill: #FFFF00;"/>
-        <polygon points="460,-240  425,-170  505,-210"
-         style="stroke: none; fill: #FFFF00;"/>
-        <polygon points="505,-210  510,-140  545 -200"
-         style="stroke: none; fill: #FFFF00;"/>
-        <path d="M 425 -320
-           A 120 120, 0, 0, 0, 545 -200
-           L 545 -320 Z" fill="#FFD700"/>
-        </g>
-      
         <g id="head">
           <circle cx="0" cy="0" r="50" class="head"/><!--Head-->
         </g>
@@ -180,10 +165,14 @@
    </g>
 <!--A3-->
 
-
+		  <linearGradient id="id_field" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="520">
+		   <stop offset="0" style="stop-color:lime"/>
+		   <stop offset="320" style="stop-color:white"/>
+		  </linearGradient>
 
       </defs>
 
+          
       <rect x="0" y="0" id="arena" width="100%" height="100%" rx="10" ry="10" style="fill: white; stroke: black;" />
       <g id="coordinateFrame" transform="translate(545, 300)">
         <!--Cordinate system-->
@@ -192,6 +181,12 @@
         <!--<circle cx="0" cy="0" r="3" style="fill: gray;" />-->
         <!--Cordinate system-->
 
+          
+          <g>
+        <polygon id="sky" points="-545,-320 545,-320 545,150 -545,150" style="stroke:black; stroke-width:0.5; fill: azure;"/>
+		<polygon id="field" points="-545,150 545,150 545,320 -545,320" style="stroke:black; stroke-width:0.5; fill: url(#id_field)"/>
+              </g>
+       
         <g id="sun0">
         <polygon points="425,-320  360,-270  435,-275"
          style="stroke: none; fill: #FFFF00;"/>
@@ -205,7 +200,7 @@
            A 120 120, 0, 0, 0, 545 -200
            L 545 -320 Z" fill="#FFD700"/>
         </g>
-       
+          
        
         <g transform="scale(1)" id="agent0">
           <use id="head0" x="-100" y="0" xlink:href="#head" style="stroke: black; fill: white;"/>
@@ -268,10 +263,13 @@
         <!--Kang Wang-->
 
 
-        
+        <!--
       </g>
           <path id="arc1" fill="none" stroke="#446688" stroke-width="2" />
       style="fill:none; stroke:red; stroke-width:6"/>
+-->
+          
+          
     </svg>
 
   </div>
