@@ -1,12 +1,9 @@
     function engine(eventid, user){
 
-<<<<<<< HEAD
         window.cancelAnimationFrame(requestAnimationFrameID);
         resetall();
         resetPosition();
         
-=======
->>>>>>> 3f05df2acfdb76440c270de91c3cb94060448b2e
                 if(eventid == 'bend'){
                         bend_engine(user);
                 }
