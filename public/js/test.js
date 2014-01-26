@@ -753,6 +753,7 @@
 	function goodluck() //ring flys out
 
 	{
+                $('#ring0').show('slow');
 
 		ring1.y.baseVal.value -= 5*s2d(velocity1);
 

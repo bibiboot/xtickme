@@ -75,3 +75,6 @@ div, p, b { padding;0 margin: 0 }
 .left { float: left; padding:10px; }
 .red { color: #e65454; }
 .close { float: right; font-size: 10px; cursor: pointer; }
+#questionMark0 { display: none; }
+#ring0 { display: none; }
+#ring1 { display: none; }

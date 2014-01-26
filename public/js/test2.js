@@ -704,7 +704,8 @@ var jump_inc=0;
 	function goodluck2() //ring flys out
 
 	{
-
+                
+                
 		ring0.y.baseVal.value -= 5*s2d(velocity0);
 
 		if(ring0.y.baseVal.value <= -150)
