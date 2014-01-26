@@ -92,7 +92,7 @@
         //$('body').append(b);
         var cx = 400+head0.x.baseVal.value;
         var cy = 200+head0.y.baseVal.value;
-        document.getElementById("arc1").setAttribute("d", describeArc(cx, cy, 300, 300, 90));
+//        document.getElementById("arc1").setAttribute("d", describeArc(cx, cy, 300, 300, 90));
 
         $("#w1").css('left', cx);
         $("#w1").css('top', cy);
