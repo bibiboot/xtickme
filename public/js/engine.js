@@ -7,25 +7,25 @@
                 if(eventid == 'bend'){
                         bend_engine(user);
                 }
-                else if(eventid == 'fly'){
+                else if(eventid == 'fly' || eventid == 'good'){
                         fly_engine(user);
                 }
                 else if(eventid == 'goodjob' || eventid == 'gj'){
                         goodjob_engine(user);
                 }
-                else if(eventid == 'isee'){
+                else if(eventid == 'isee' || eventid == 'ic'){
                         isee_engine(user);
                 }
                 else if(eventid == 'kiss'){
                         kiss_engine(user);
                 }
-                else if(eventid == 'why'){
+                else if(eventid == 'why' || eventid == '?'){
                         why_engine(user);
                 }
                 else if(eventid == 'goodluck'){
                         goodluck_engine(user);
                 }
-                else if(eventid == 'byebye'){
+                else if(eventid == 'byebye' || eventid == 'bye'){
                         byebye_engine(user);
                 }
                 else if(eventid == 'walk'){
@@ -35,6 +35,9 @@
 				{
 						resetposition_engine(user);
 				}
+				else if(eventid == 'hi'){
+                        hi_engine(user);
+                }
 		//----------Kang Wang------------//
 
 		else if(eventid== 'jump'){
@@ -56,7 +59,7 @@
 		//----------Kang Wang------------//
                         else if(eventid == 'fuck'){
             fuck_engine(user);
-        } else if(eventid == 'shocked'){
+        } else if(eventid == 'shocked' || eventid== 'bad'){
             shocked_engine(user);
         } else if(eventid == 'love'){
             love_engine(user);   
@@ -65,7 +68,7 @@
         } else if(eventid == 'wicked'){
 //            scale_para=0;
             wicked_engine(user);
-        } else if(eventid == 'lol'){
+        } else if(eventid == 'lol' || eventid == 'happy'){
             lol_engine(user);
         } else if(eventid == 'sad'){
             sad_engine(user);   
@@ -225,6 +228,15 @@
 
         }
 
+    }
+	
+	function hi_engine(user){
+        if(user == 1) {
+           requestAnimationFrameID = window.requestAnimationFrame(hi);
+        }
+        else {
+         requestAnimationFrameID = window.requestAnimationFrame(hi2);
+        }
     }
 	
 	function resetposition_engine(user)
