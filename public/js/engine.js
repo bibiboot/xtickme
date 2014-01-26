@@ -6,7 +6,7 @@
                 else if(eventid == 'fly'){
                         fly_engine(user);
                 }
-                else if(eventid == 'goodjob'){
+                else if(eventid == 'goodjob' || eventid == 'gj'){
                         goodjob_engine(user);
                 }
                 else if(eventid == 'isee'){
