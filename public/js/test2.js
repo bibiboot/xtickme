@@ -52,7 +52,8 @@
                  requestAnimationFrameID = window.requestAnimationFrame(jump2);}
 		else if(jump_inc>=80 && jump_inc<81){
 			resetall();
-			back_to_position2();}
+			back_to_position2();
+			resetPosition();}
     }
 
 
@@ -90,7 +91,8 @@
                   bend2();
                   requestAnimationFrameID = window.requestAnimationFrame(Hello2);}
 		  else if(Hello_inc==91){
-			      resetall();}
+			      resetall();
+				  resetPosition();}
     }
 	
 	function bend_for_sorry2() {
@@ -172,7 +174,8 @@
 
 	 function stop_sleepy(){
 
-		 sleepy_inc=-1;}
+		 resetall();
+		 resetPosition();}
 
 		 
 
@@ -259,7 +262,8 @@
 
 		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
 	  else if(sorry_inc==136){
-		 resetall();}
+		 resetall();
+		 resetPosition();}
 
 	  /*else if(sorry_inc>=136 && sorry_inc<137){
 

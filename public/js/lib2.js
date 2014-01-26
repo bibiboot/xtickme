@@ -157,3 +157,76 @@
 	  rthigh1.transform.baseVal.getItem(0).setRotate(rthigh1.currentTheta, rthigh1_x, rthigh0_y);
 	  
 	}
+	
+	    function resetall(){
+		velocity0 = 50;
+        velocity1 = 50;
+	//-----------Kang Wang-----------//
+		jump_inc=0;
+		Hello_inc=0;
+		sorry_inc=0;
+		sleepy_inc=0;
+	//-----------Bo Wang-----------//
+	    flyCount1 = 0;
+       //goodjob action
+        goodjobFlag = 0;
+        goodjobHandCount = 120;
+        goodjobDirection = 1;
+       //i see action
+        shakeheadFlag = 1;
+        shakeheadCount = 120;
+        shakeheadDirection = 1;
+      //kiss action
+        kissDirection0 = 1;
+        kissDirection1 = -1;
+        kissCount0 = 30;
+        kissCount1 = 30;
+      //why
+        questionMarkScaler0 = 1;
+        questionMarkScaler1 = 1;
+        questionMarkFlag0 = 1;
+        questionMarkFlag1 = 1;
+      //walk action
+        walkFlag0 = 0;
+        walkThighDirection0 = 1;
+        walkDirection0 = -1;
+        walkDistance0 = MAX_X;
+        walkFlag1 = 0;
+        walkThighDirection1 = 1;
+        walkDirection1 = 1;
+        walkDistance1 = MAX_X;
+      //byebye action
+        byebyeHandFlag0 = 0;
+        byebyeWaveCount0 = 75;
+        byebyeHandFlag1 = 0;
+        byebyeWaveCount1 = 75;
+
+	//-----------Rui Tong-----------//
+	    scale_para=0.9;
+        flag=false;
+        fuck_inc = 0;
+        i=0;
+        flag_lol=1;
+		drop=0;
+		theta=0;
+		a=0.1;
+		a1=0.1;
+        a2=0.1;
+        a3=0.1;
+        a4=0.1;
+        a5=0.1;
+		$('#heart0').css('display', 'none');
+
+        $('#mouth0').css('display', 'none');
+
+        $('#tear0_0').css('display', 'none');
+        $('#tear1_0').css('display', 'none');
+        $('#tear2_0').css('display', 'none');
+        $('#tear3_0').css('display', 'none');
+
+        $('#rain1').css('display', 'none');
+        $('#rain2').css('display', 'none');
+        $('#rain3').css('display', 'none');
+        $('#rain4').css('display', 'none');
+        $('#rain5').css('display', 'none');
+	}
