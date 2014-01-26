@@ -231,6 +231,7 @@
 		$('#heart0').css('display', 'none');
 
         $('#mouth0').css('display', 'none');
+        $('#mouth1').css('display', 'none');
 
         $('#tear0_0').css('display', 'none');
         $('#tear1_0').css('display', 'none');

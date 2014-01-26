@@ -437,7 +437,7 @@
 
     // rtong2
     var flag_lol=1;
-    var scale_para=0.9
+    var scale_para=0.9;
     var lol_inc=0;
     function lol(){
         $('#mouth0').css('display', 'block');
