@@ -544,6 +544,7 @@
     var lol_inc=0;
     function lol2(){
         $('#mouth1').css('display', 'block');
+<<<<<<< HEAD
         if(lol_inc<200){
             lol_inc++;
             if(scale_para<1.2 && scale_para>0.8){
@@ -562,6 +563,26 @@
             resetall();
             resetPosition();
         }
+=======
+		if(lol_inc++ < 200)
+		{
+        	if(scale_para<1.2 && scale_para>0.8){
+            	if(flag_lol==1)
+                	scale_para+=0.05;
+            	else if (flag_lol==-1)
+                	scale_para-=0.05;
+            	mouth1.transform.baseVal.getItem(0).setScale(1,scale_para);
+        	} else {
+            	flag_lol=-flag_lol;
+            	scale_para=scale_para+0.05*flag_lol;
+        	}
+        	fly2_lol();
+        	requestAnimationFrameID = window.requestAnimationFrame(lol2);
+		} else {
+			resetall();
+			resetPosition();
+		}
+>>>>>>> 747412cbaf6e04f87f1a4fd4856e146836932234
     }
 
 
@@ -1014,6 +1035,7 @@
 
 		else if(byebyeWaveCount1-- >= 0 && (byebyeHandFlag1 == 1 || byebyeHandFlag1 == -1)) //wave hand
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		{
 <<<<<<< HEAD
@@ -1023,6 +1045,15 @@
     			byebyeHandFlag1 = -1;
 
 =======
+
+			if(lhand1.currentTheta >= 85)
+
+    			byebyeHandFlag1 = -1;
+
+>>>>>>> 747412cbaf6e04f87f1a4fd4856e146836932234
+=======
+
+		{
 
 			if(lhand1.currentTheta >= 85)
 
