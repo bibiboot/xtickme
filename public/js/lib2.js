@@ -158,7 +158,7 @@
 	  
 	}
 	
-	    function resetall(){
+    function resetall(){
 		velocity0 = 50;
         velocity1 = 50;
 	//-----------Kang Wang-----------//
@@ -205,6 +205,11 @@
 	    scale_para=0.9;
         flag=false;
         fuck_inc = 0;
+        love_inc = 0;
+        suck_inc = 0;
+        lol_inc = 0;
+        sad_inc = 0;
+        wicked_inc=0;
         i=0;
         flag_lol=1;
 		drop=0;
