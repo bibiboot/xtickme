@@ -48,4 +48,18 @@
     }
 
 
+    $(document).ready(function(){
+        $('#logo').hover(function() {
+            $('#faq').show('slow');
+        }, function() {
+            $('#faq').hide('slow');
+        });
+       });
 
+    $(document).ready(function(){
+        $('#conversation').hover(function() {
+            $('#faq').show('slow');
+        }, function() {
+            $('#faq').hide('slow');
+        });
+       });

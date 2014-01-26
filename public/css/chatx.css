@@ -70,3 +70,8 @@ div, p, b { padding;0 margin: 0 }
 #agent1 { display: none; }
 #heart0 { display: none; }
 
+#faq { display:none; position: absolute;left: 25%;top: 18%;margin: auto 0;border-radius: 5px;background: white;height: 456px;z-index: 1001;padding: 31px;box-shadow: 0 5px 15px rgba(0,0,0,0.5); border-radius: 10px; font-size: 18px; width: 608px; overflow: hidden; }
+
+.left { float: left; padding:10px; }
+.red { color: #e65454; }
+.close { float: right; font-size: 10px; cursor: pointer; }
