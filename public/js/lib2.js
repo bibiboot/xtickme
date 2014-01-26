@@ -78,3 +78,26 @@
       rthigh.y.baseVal.value += s2d(velocity)*(-cos(rthigh.currentTheta));
       rthigh.x.baseVal.value += s2d(velocity)*(-sin(rthigh.currentTheta));
     }
+
+    function move_body_hb(headx, body, lhand, rhand, lthigh, rthigh, velocity, walkDirection) {
+      headx.x.baseVal.value += walkDirection*s2d(velocity);
+
+      //try to control the body
+      body.x.baseVal.value += walkDirection*s2d(velocity)*cos(body.currentTheta);
+      body.y.baseVal.value += walkDirection*s2d(velocity)*(-sin(body.currentTheta));
+
+      //try to control the hands
+      lhand.x.baseVal.value += walkDirection*s2d(velocity)*cos(lhand.currentTheta);
+      lhand.y.baseVal.value += walkDirection*s2d(velocity)*(-sin(lhand.currentTheta));
+
+      rhand.x.baseVal.value += walkDirection*s2d(velocity)*cos(rhand.currentTheta);
+      rhand.y.baseVal.value += walkDirection*s2d(velocity)*(-sin(rhand.currentTheta));
+
+      //try to control the thighs
+      lthigh.x.baseVal.value += walkDirection*s2d(velocity)*cos(lthigh.currentTheta);
+      lthigh.y.baseVal.value += walkDirection*s2d(velocity)*(-sin(lthigh.currentTheta));
+
+      rthigh.x.baseVal.value += walkDirection*s2d(velocity)*cos(rthigh.currentTheta);
+      rthigh.y.baseVal.value += walkDirection*s2d(velocity)*(-sin(rthigh.currentTheta));
+    }
+

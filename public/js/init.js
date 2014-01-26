@@ -12,17 +12,74 @@
     var transformObject15;
     var transformObject16;
     var transformObject21;
+    var transformObjectQuestionMark;
+    var transformObjectRing0;
+    var transformObjectRing1;
+
+
+        //KW
+	var transformObject20;
+	var transformObject22;
+	var transformObject23;
+	var transformObject24;
+	var transformObject25;
+	var transformObject26;
+        //
     var svgElement;
     var requestAnimationFrameID; // Contains the requestAnimationFrame() object.
     var velocity0 = 50;
     var velocity1 = 50;
-    var bendDirection0 = 1;
-    var bendDirection1 = 1;
+    var bendDirection0 = 1; //BO
+    var bendDirection1 = -1; //BO
     var flyDirection0 = 1;
     var flyDirection1 = 1;
-    var walkFlag = 0;
+    var flyCount0 = 0;
+    var flyCount1 = 0
+   //goodjob action
+    var goodjobFlag = 0;            //Control the condition of hand
+    var goodjobHandCount = 120;     //time for clapping. default = 120
+    var goodjobDirection = 1        //1:forward to left, -1:forward to right
+    //i see action
+    var shakeheadFlag = 1;          //Control the condition of head
+    var shakeheadCount = 120;       //time for shanking. default = 120
+    var shakeheadDirection = 1;     //1:forward to left, -1:forward to right
+    //kiss action
+    var kissDirection0 = 1;         //1:forward to left, -1:forward to right
+    var kissDirection1 = -1;        //for user2
+    var kissCount0 = 30;            //time for kiss. default = 30
+    var kissCount1 = 30;            //for user2
+    //why
+    var questionMarkScaler0 = 1;    //Control the scale of question mark
+    var questionMarkScaler1 = 1;    //for user2
+    var questionMarkFlag0 = 1;              //Control the condition of the question mark
+    var questionMarkFlag1 = 1;              //for user2
+    //walk action
+    var walkFlag0 = 0;                  //For switching the action between movming whole body and rotating the hands/thighs
+    var walkThighDirection0 = 1;    //Control the direction of the hands/thighs rotation
+    var walkDirection0 = -1;                //-1:walk forward to left, 1:walk forward to right
+    var walkDistance0 = MAX_X;
+    var walkFlag1 = 0;                      //For user2
+    var walkThighDirection1 = 1;    //For user2
+    var walkDirection1 = 1;         //For user2
+    var walkDistance1 = MAX_X;      //For user2
+    //byebye action
+    var byebyeHandFlag0 = 0;        //Control the condition of hand while doing byebye action. need to be set to 0 after byebye action.
+    var byebyeWaveCount0 = 75;      //time for waving hands. default = 75
+    var byebyeHandFlag1 = 0;        //For user2
+    var byebyeWaveCount1 = 75;      //For user2
+
+
     var MAX_X = 500;
     var MAX_Y = 320;
+
+
+	  var head0_x=-100; var head0_y=0; var head1_x=100; var head1_y=0;
+	  var body0_x=-100; var body0_y=50; var body1_x=100; var body1_y=50; 
+	  var lhand0_x=-100; var lhand0_y=75; var lhand1_x=100; var lhand1_y=75;
+	  var rhand0_x=-100; var rhand0_y=75; var rhand1_x=100; var rhand1_y=75;
+	  var lthigh0_x=-100; var lthigh0_y=150; var lthigh1_x=100; var lthigh1_y=150;
+	  var rthigh0_x=-100; var rthigh0_y=150; var rthigh1_x=100; var rthigh1_y=150;
+
     function initConstants()
     {
       constants.delay = 12;
@@ -42,6 +99,19 @@
       transformObject14 = svgElement.createSVGTransform();
       transformObject15 = svgElement.createSVGTransform();
       transformObject16 = svgElement.createSVGTransform();
+
+      //Bowen updates from here
+      transformObjectQuestionMark = svgElement.createSVGTransform();
+      transformObjectRing0 = svgElement.createSVGTransform();
+      transformObjectRing1 = svgElement.createSVGTransform();
+
+	  transformObject20 = svgElement.createSVGTransform();
+	  transformObject22 = svgElement.createSVGTransform();
+	  transformObject23 = svgElement.createSVGTransform();
+	  transformObject24 = svgElement.createSVGTransform();
+	  transformObject25 = svgElement.createSVGTransform();
+	  transformObject26 = svgElement.createSVGTransform();
+
     }
 
     function extendObject(){
@@ -61,6 +131,19 @@
       var rthigh1 = document.getElementById("rthigh1");
 
       var heart0 = document.getElementById("heart0");
+
+     //Bowen updates from heres
+     var questionMark0 = document.getElementById("questionMark0");
+     var ring0 = document.getElementById("ring0");
+     var ring1 = document.getElementById("ring1");
+
+     var z1 = document.getElementById("z1_0");
+      var z2 = document.getElementById("z2_0");
+      var z3 = document.getElementById("z3_0");
+	  var z4 = document.getElementById("z1_1");
+      var z5 = document.getElementById("z2_1");
+      var z6 = document.getElementById("z3_1");
+
 
       head0.transform.baseVal.appendItem(transformObject1);
       head0.currentTheta = constants.initialTheta;
@@ -90,5 +173,21 @@
       rthigh1.currentTheta = constants.initialTheta;
 
       heart0.transform.baseVal.appendItem(transformObject21);
+
+      //Bowen updates from here
+      ring0.transform.baseVal.appendItem(transformObjectRing0);
+      ring0.currentTheta = constants.initialTheta;
+      ring1.transform.baseVal.appendItem(transformObjectRing1);
+      ring1.currentTheta = constants.initialTheta;
+      questionMark0.transform.baseVal.appendItem(transformObjectQuestionMark);
+      questionMark0.currentTheta = constants.initialTheta;
+
+
+	  z1.transform.baseVal.appendItem(transformObject20);
+	  z2.transform.baseVal.appendItem(transformObject22);
+	  z3.transform.baseVal.appendItem(transformObject23);
+	  z4.transform.baseVal.appendItem(transformObject24);
+	  z5.transform.baseVal.appendItem(transformObject25);
+	  z6.transform.baseVal.appendItem(transformObject26);
     }
 

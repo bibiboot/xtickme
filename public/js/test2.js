@@ -8,35 +8,50 @@
     }*/
 
     function bend2() {
-    	if(body1.currentTheta > 90)
-    		bendDirection1 = -1;
+        //BO
+        if(body1.currentTheta < -90)
+                bendDirection1 = 1;
         // Mid point
         var cx = lthigh1.x.baseVal.value;
         var cy = lthigh1.y. baseVal.value;
-    	rotate_body(1, cx, cy, bendDirection1, body1);
-    	rotate_lhand(1, cx, cy, bendDirection1, lhand1);
-    	rotate_rhand(1, cx, cy, bendDirection1, rhand1);
-    	rotate_head(1, cx, cy, bendDirection1, head1);
-    	if(body1.currentTheta == 0){
-    		bendDirection1 = 1;
-    		return;
-    	}
-    	requestAnimationFrameID = window.requestAnimationFrame(bend2);	
+        rotate_body(1, cx, cy, bendDirection1, body1);
+        rotate_lhand(1, cx, cy, bendDirection1, lhand1);
+        rotate_rhand(1, cx, cy, bendDirection1, rhand1);
+        rotate_head(1, cx, cy, bendDirection1, head1);
+        if(body1.currentTheta == 0){
+                bendDirection1 = -1;
+                return;
+        }
+        requestAnimationFrameID = window.requestAnimationFrame(bend2);
     }
-    
+
     function fly2() {
-    	if(lhand1.currentTheta > 80)
-    		flyDirection1 = -1;
-    	if(lhand1.currentTheta < -20)
-    		flyDirection1 = 1;
-        var lcx = lhand1.x.baseVal.value;
-        var lcy = lhand1.y. baseVal.value;
-        var rcx = rhand1.x.baseVal.value;
-        var rcy = rhand1.y. baseVal.value;
-    	rotate_lhand(1, 0, 75, flyDirection1, lhand1);
-    	rotate_rhand(1, 0, 75, -flyDirection1, rhand1);
-    	requestAnimationFrameID = window.requestAnimationFrame(fly2);
+        //BO
+        if(flyCount1++ < 100)
+                {
+                if(lhand1.currentTheta > 80)
+                        flyDirection1 = -1;
+                if(lhand1.currentTheta < -20)
+                        flyDirection1 = 1;
+                }
+                else
+                {
+                        if(lhand1.currentTheta > 0)
+                                flyDirection1 = -1;
+                        if(lhand1.currentTheta < 0)
+                        flyDirection1 = 1
+                        if(lhand1.currentTheta == 0)
+                        {
+                                flyDirection1 = 1;
+                                flyCount1 = 0;
+                                return;
+                        }
+                }
+                rotate_lhand(5, body1.x.baseVal.value, body1.y.baseVal.value + 25, flyDirection1, lhand1);
+        rotate_rhand(5, body1.x.baseVal.value, body1.y.baseVal.value + 25, -flyDirection1, rhand1);
+        requestAnimationFrameID = window.requestAnimationFrame(fly2);
     }
+
 
     function thigh_split2() {
         flyDirection1 = 1;
@@ -47,12 +62,11 @@
         requestAnimationFrameID = window.requestAnimationFrame(thigh_split2);
     }
 
-
-    function split2(cx, cy) {
+    function split2(theta, cx, cy, direction) {
+        // BO
         // Joint of the thighs around which split happens
-        flyDirection1 = 1;
-        rotate_lthigh(1, cx, cy, flyDirection1, lthigh1);
-        rotate_rthigh(-1, cx, cy, flyDirection1, rthigh1);
+        rotate_lthigh(theta, cx, cy, direction, lthigh1);
+        rotate_rthigh(-theta, cx, cy, direction, rthigh1);
         //requestAnimationFrameID = window.requestAnimationFrame(split);
     }
 
@@ -66,7 +80,8 @@
         requestAnimationFrameID = window.requestAnimationFrame(split_fly2);
     }
     
-    var jump_inc=0;
+
+var jump_inc=0;
     function jump2(){
         //make stickman jumo---Kang Wang
         //jump up
@@ -91,6 +106,8 @@
                  velocity1=-320;
                  move_body_v(body1, head1, lhand1, rhand1, lthigh1, rthigh1, velocity1);
                  requestAnimationFrameID = window.requestAnimationFrame(jump2);}
+		else if(jump_inc>=80 && jump_inc<81){
+			back_to_position2();}
     }
 
 
@@ -129,8 +146,10 @@
     }
 
     function bend_for_sorry2() {
-        if(body1.currentTheta < 90){
-            bendDirection1 = 1;
+        if(body1.currentTheta < -90){
+            bendDirection1 = -1;
+            return ;
+           }
             // Mid point
             var cx = lthigh1.x.baseVal.value;
             var cy = lthigh1.y. baseVal.value;
@@ -143,7 +162,6 @@
                 //return;
             //}
             requestAnimationFrameID = window.requestAnimationFrame(bend_for_sorry2);
-          }
     }
 
     function bend_back_from_sorry2(){
@@ -279,4 +297,584 @@
             velocity1=-velocity1;
         }
     }
+
+
+	function goodjob2()
+
+	{
+
+		if(goodjobFlag == 0)	//rotate the left hand
+
+		{
+
+			if(goodjobDirection == 1 && lhand1.currentTheta >= 0)
+
+				rotate_lhand(5, body1.x.baseVal.value, body1.y.baseVal.value+25, 1, lhand1);
+
+			if(goodjobDirection == -1 && rhand1.currentTheta <= 0)
+
+				rotate_rhand(5, body1.x.baseVal.value, body1.y.baseVal.value+25, -1, rhand1);
+
+			if(lhand1.currentTheta >= 190 || rhand1.currentTheta <= -190)
+
+			{
+
+				goodjobFlag = 1;
+
+			}
+
+		}
+
+		else if(goodjobHandCount-- >= 0 && (goodjobFlag == 1 || goodjobFlag == -1)) //clapping
+
+		{
+
+			if(goodjobDirection == 1)
+
+			{
+
+				if(rhand1.currentTheta >= -190)
+
+    				goodjobFlag = 1;
+
+    			if(rhand1.currentTheta <= -230)
+
+					goodjobFlag = -1;
+
+			}
+
+			else if(goodjobDirection == -1)
+
+			{
+
+				if(rhand1.currentTheta >= -190)
+
+    				goodjobFlag = 1;
+
+    			if(rhand1.currentTheta <= -230)
+
+					goodjobFlag = -1;	
+
+			}
+
+			rotate_lhand(4, body1.x.baseVal.value, body1.y.baseVal.value+25, goodjobFlag, lhand1);
+
+			rotate_rhand(4, body1.x.baseVal.value, body1.y.baseVal.value+25, -goodjobFlag, rhand1);
+
+		}
+
+		else
+
+		{	
+
+			if(rhand1.currentTheta != 0)
+
+				rotate_rhand(2, body1.x.baseVal.value, body1.y.baseVal.value+25, 1, rhand1);
+
+			if(lhand1.currentTheta != 0)
+
+				rotate_lhand(2, body1.x.baseVal.value, body1.y.baseVal.value+25, -1, lhand1);
+
+			if(lhand1.currentTheta == 0 && rhand1.currentTheta == 0) // set values to default
+
+			{
+
+				goodjobDirection = 1;
+
+				goodjobFlag = 0;
+
+				goodjobHandCount = 120;
+
+				return;
+
+			}
+
+		}
+
+		requestAnimationFrameID = window.requestAnimationFrame(goodjob2);
+
+	}
+
+	
+
+	function isee2()	//just shake head
+
+	{
+
+		if(shakeheadCount-- >= 0 && (shakeheadFlag == 1 || shakeheadFlag == -1))
+
+		{
+
+			if(shakeheadDirection == 1)
+
+			{
+
+				if(head1.currentTheta <= 0)
+
+					shakeheadFlag = 1;
+
+				if(head1.currentTheta >= 30)
+
+					shakeheadFlag = -1;
+
+			}
+
+			else if(shakeheadDirection == -1)
+
+			{
+
+				if(head1.currentTheta >= 0)
+
+					shakeheadFlag = -1;
+
+				if(head1.currentTheta <= -30)
+
+					shakeheadFlag = 1;
+
+			}
+
+			rotate_head(1, body1.x.baseVal.value, body1.y.baseVal.value, shakeheadFlag, head1);
+
+		}
+
+		else
+
+		{
+
+			if(head1.currentTheta != 0)
+
+				rotate_head(1, body1.x.baseVal.value, body1.y.baseVal.value, -shakeheadDirection, head1);
+
+			else
+
+			{
+
+				shakeheadCount = 120;
+
+				shakeheadFlag = 1;
+
+				shakeheadDirection = 1;
+
+				return;
+
+			}
+
+		}
+
+		requestAnimationFrameID = window.requestAnimationFrame(isee2);
+
+	}
+
+	
+
+	function kiss2()	//just rotate the head
+
+	{
+
+		if(kissCount1-- > 0)
+
+			rotate_head(1, body1.x.baseVal.value, body1.y.baseVal.value, kissDirection1, head1);
+
+		else if(kissCount1-- > -250)
+
+		{
+
+			//delay for a while
+
+		}
+
+		else if(head1.currentTheta != 0)
+
+		{
+
+			rotate_head(1, body1.x.baseVal.value, body1.y.baseVal.value, -kissDirection1, head1);
+
+		}
+
+		else
+
+		{
+
+			kissCount1 = 30;
+
+			kissDirection1 = -1;
+
+			return;
+
+		}
+
+		requestAnimationFrameID = window.requestAnimationFrame(kiss2);
+
+	}
+
+
+
+	function why2() // show question mark
+
+	{	
+
+		if(questionMarkFlag1 == 1) // magnify
+
+		{	
+
+			questionMarkScaler1 += 0.05;
+
+			if(questionMarkScaler1 >= 2)
+
+				questionMarkFlag1 = 0;
+
+		}
+
+		else if(questionMarkFlag1 == 0) // shrink
+
+		{
+
+			questionMarkScaler1 -= 0.05;
+
+			if(questionMarkScaler1 <= 0)
+
+				questionMarkFlag1 = 1;
+
+		}
+
+		questionMark0.transform.baseVal.getItem(0).setScale(questionMarkScaler1,questionMarkScaler1);
+
+		requestAnimationFrameID = window.requestAnimationFrame(why2);
+
+	}
+
+	
+
+	function goodluck2() //ring flys out
+
+	{
+
+		ring0.y.baseVal.value -= 5*s2d(velocity0);
+
+		if(ring0.y.baseVal.value <= -150)
+
+		{
+
+			ring0.y.baseVal.value = -60;
+
+			ring0.x.baseVal.value = -100;
+
+			return;
+
+		}
+
+		requestAnimationFrameID = window.requestAnimationFrame(goodluck2);
+
+	}
+
+	
+
+	function byebye2(){	
+
+		if(byebyeHandFlag1 == 0)	//raise the left hand
+
+		{
+
+			if(lhand1.currentTheta >= 0)
+
+				rotate_lhand(1, body1.x.baseVal.value, body1.y.baseVal.value+25, 1, lhand1);
+
+			if(lhand1.currentTheta >= 85)
+
+			{
+
+				byebyeHandFlag1 = -1;
+
+			}
+
+		}
+
+		else if(byebyeWaveCount1-- >= 0 && (byebyeHandFlag1 == 1 || byebyeHandFlag1 == -1)) //wave hand
+
+		{
+
+			if(lhand1.currentTheta >= 85)
+
+    			byebyeHandFlag1 = -1;
+
+    		if(lhand1.currentTheta <= 60)
+
+				byebyeHandFlag1 = 1;
+
+    		rotate_lhand(2, lhand1.x.baseVal.value, lhand1.y.baseVal.value, byebyeHandFlag1, lhand1);
+
+		}
+
+		else // put down the hand
+
+		{
+
+			if(lhand1.currentTheta != 0)
+
+				rotate_lhand(1, body1.x.baseVal.value, body1.y.baseVal.value+25, -1, lhand1);
+
+			else // set values to default
+
+			{
+
+				byebyeHandFlag1 = 0;
+
+				byebyeWaveCount1 = 75;
+
+				return;
+
+			}
+
+		}
+
+			
+
+		requestAnimationFrameID = window.requestAnimationFrame(byebye2);
+
+	}
+
+	
+
+	function walk2() {
+
+    	if(--walkDistance1 < 0)
+
+		{
+
+			velocity1 = 50;
+
+			walkThighDirection1 = 1;
+
+			walkDirection1 = 1;
+
+			walkDistance1 = MAX_X;
+
+			return;
+
+		}
+
+			
+
+        velocity1 = 800;
+
+    	if(walkFlag1 < 2){
+
+    	        move_body_hb(head1, body1, lhand1, rhand1, lthigh1, rthigh1, velocity1, walkDirection1);
+
+				walkFlag1 ++;
+
+    	}
+
+    	else if(walkFlag1 < 4){
+
+             lthigh1.y.baseVal.value = body1.y.baseVal.value+100;
+
+             lthigh1.x.baseVal.value = body1.x.baseVal.value;
+
+             rthigh1.y.baseVal.value = body1.y.baseVal.value+100;
+
+             rthigh1.x.baseVal.value = body1.x.baseVal.value;
+
+				
+
+			lhand1.y.baseVal.value = body1.y.baseVal.value+25;
+
+            lhand1.x.baseVal.value = body1.x.baseVal.value;
+
+            rhand1.y.baseVal.value = body1.y.baseVal.value+25;
+
+            rhand1.x.baseVal.value = body1.x.baseVal.value;
+
+			
+
+			if(lthigh1.currentTheta <= -70)
+
+				walkThighDirection1 = 1;
+
+			else if(lthigh1.currentTheta >= -20)
+
+				walkThighDirection1 = -1;
+
+			split2(7, body1.x.baseVal.value, body1.y.baseVal.value+100, walkThighDirection1);
+
+			rotate_lhand(7, body1.x.baseVal.value, body1.y.baseVal.value+25, walkThighDirection1, lhand1);
+
+        	rotate_rhand(-7, body1.x.baseVal.value, body1.y.baseVal.value+25, walkThighDirection1, rhand1);
+
+			walkFlag1 ++;
+
+    	}
+
+		else
+
+		{
+
+			walkFlag1 = 0;
+
+		}
+
+    		
+
+    	requestAnimationFrameID = window.requestAnimationFrame(walk2);
+
+    }
+
+	 var sleepy_inc=0;
+
+	 function sleepy2(){
+
+     //Action: sleepy----Kang Wang		 
+
+	   if(sleepy_inc>=0 && sleepy_inc<30){
+
+		   sleepy_inc++;
+
+		   requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+		 else if(sleepy_inc>=30 && sleepy_inc<70){
+
+			 sleepy_inc++;
+
+			 $("#z1_1").css('display','block');
+
+			 console.log("work!");
+
+			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+		 else if(sleepy_inc>=70 && sleepy_inc<110){
+
+			 sleepy_inc++;
+
+			 //$("#z1_0").css('display','none');
+
+			 $("#z2_1").css('display','block');
+
+			 console.log("work2!");
+
+			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+		 else if(sleepy_inc>=110 && sleepy_inc<150){
+
+			 sleepy_inc++;
+
+			 $("#z3_1").css('display','block');
+
+			 requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+	     else if(sleepy_inc==150){
+
+			 $("#z1_1").css('display','none');
+
+			 $("#z2_1").css('display','none');
+
+			 $("#z3_1").css('display','none');
+
+			 sleepy_inc=0;
+
+		     requestAnimationFrameID = window.requestAnimationFrame(sleepy2);}
+
+	 }
+
+	 
+
+	 function stop_sleepy(){
+
+		 sleepy_inc=-1;}
+
+		 
+
+	function back_to_position2(){
+
+		 head1.x.baseVal.value=head1_x; head1.y.baseVal.value=head1_y;
+
+		 body1.x.baseVal.value=body1_x; body1.y.baseVal.value=body1_y;
+
+		 lhand1.x.baseVal.value=lhand1_x; lhand1.y.baseVal.value=lhand1_y;
+
+		 rhand1.x.baseVal.value=rhand1_x; rhand1.y.baseVal.value=rhand1_y;
+
+		 lthigh1.x.baseVal.value=lthigh1_x; lthigh1.y.baseVal.value=lthigh1_y;
+
+		 rthigh1.x.baseVal.value=rthigh1_x; rthigh1.y.baseVal.value=rthigh1_y;
+
+		 }
+
+	var sorry_inc=0;
+
+	function sorry2(){
+
+	//Action: Sorry----Kang Wang
+
+	  var ltcx = lthigh1.x.baseVal.value;
+
+      var ltcy = lthigh1.y.baseVal.value;
+
+	  var rtcx = rthigh1.x.baseVal.value;
+
+	  var rtcy = rthigh1.y.baseVal.value;
+
+	  var lcx = lhand1.x.baseVal.value;
+
+      var lcy = lhand1.y. baseVal.value;
+
+      var rcx = rhand1.x.baseVal.value;
+
+      var rcy = rhand1.y. baseVal.value;
+
+	  if(sorry_inc<45){
+
+		  sorry_inc++;
+
+		  rotate_lhand(1, lcx, lcy, -1, lhand1);
+
+		  rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+
+		  rotate_rthigh(1, rtcx, rtcy, 1, rthigh1);
+
+		  //rotate_rthigh(1, rtcx, rtcy, 1, rthigh1);
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  else if(sorry_inc>=45 && sorry_inc<90){
+
+		   sorry_inc++;
+
+		   //rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+
+		   rotate_lhand(1, lcx, lcy, -1, lhand1);
+
+		   //rotate_rthigh(1, rtcx, rtcy, -1, rthigh1);
+
+		   requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  else if(sorry_inc>=90 && sorry_inc<135){
+
+		  sorry_inc++;
+
+		  //rotate_lthigh(1, ltcx, ltcy, -1, lthigh1);
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  else if(sorry_inc>=135 && sorry_inc<136){
+
+		  sorry_inc++;
+
+		  lhand1.y.baseVal.value = lthigh1.y.baseVal.value - 75*sin(body0.currentTheta);
+
+          lhand1.x.baseVal.value = lthigh1.x.baseVal.value + 75*cos(body0.currentTheta)+10;
+
+		  bend_for_sorry2();
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry2);}
+
+	  /*else if(sorry_inc>=136 && sorry_inc<137){
+
+		  sorry_inc++;
+
+		  back_from_sorry();
+
+		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}*/
+
+	  }
+
 
