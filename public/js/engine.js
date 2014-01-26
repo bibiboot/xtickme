@@ -13,7 +13,7 @@
                 else if(eventid == 'goodjob' || eventid == 'gj'){
                         goodjob_engine(user);
                 }
-                else if(eventid == 'isee'){
+                else if(eventid == 'isee' || eventid == 'ic'){
                         isee_engine(user);
                 }
                 else if(eventid == 'kiss'){
