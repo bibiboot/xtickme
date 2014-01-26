@@ -518,22 +518,29 @@
 
 
    // rtong2
+    var lol_inc = 0;
     var flag_lol=1;
     var scale_para=0.9
     function lol2(){
         $('#mouth1').css('display', 'block');
-        if(scale_para<1.2 && scale_para>0.8){
-            if(flag_lol==1)
-                scale_para+=0.05;
-            else if (flag_lol==-1)
-                scale_para-=0.05;
-            mouth1.transform.baseVal.getItem(0).setScale(1,scale_para);
-        } else {
-            flag_lol=-flag_lol;
-            scale_para=scale_para+0.05*flag_lol;
-        }
-        fly2_lol();
-        requestAnimationFrameID = window.requestAnimationFrame(lol2);
+		if(lol_inc++ < 200)
+		{
+        	if(scale_para<1.2 && scale_para>0.8){
+            	if(flag_lol==1)
+                	scale_para+=0.05;
+            	else if (flag_lol==-1)
+                	scale_para-=0.05;
+            	mouth1.transform.baseVal.getItem(0).setScale(1,scale_para);
+        	} else {
+            	flag_lol=-flag_lol;
+            	scale_para=scale_para+0.05*flag_lol;
+        	}
+        	fly2_lol();
+        	requestAnimationFrameID = window.requestAnimationFrame(lol2);
+		} else {
+			resetall();
+			resetPosition();
+		}
     }
 
 
@@ -834,7 +841,7 @@
 	function why2() // show question mark
 
 	{	
-
+		$("#questionMark0").css('display','block');
 		if(questionMarkFlag1 == 1) // magnify
 
 		{	
@@ -955,7 +962,69 @@
 		requestAnimationFrameID = window.requestAnimationFrame(byebye2);
 
 	}
+	
+	function hi2(){	
 
+		if(byebyeHandFlag1 == 0)	//raise the left hand
+
+		{
+
+			if(lhand1.currentTheta >= 0)
+
+				rotate_lhand(1, body1.x.baseVal.value, body1.y.baseVal.value+25, 1, lhand1);
+
+			if(lhand1.currentTheta >= 85)
+
+			{
+
+				byebyeHandFlag1 = -1;
+
+			}
+
+		}
+
+		else if(byebyeWaveCount1-- >= 0 && (byebyeHandFlag1 == 1 || byebyeHandFlag1 == -1)) //wave hand
+
+		{
+
+			if(lhand1.currentTheta >= 85)
+
+    			byebyeHandFlag1 = -1;
+
+    		if(lhand1.currentTheta <= 60)
+
+				byebyeHandFlag1 = 1;
+
+    		rotate_lhand(2, lhand1.x.baseVal.value, lhand1.y.baseVal.value, byebyeHandFlag1, lhand1);
+
+		}
+
+		else // put down the hand
+
+		{
+
+			if(lhand1.currentTheta != 0)
+
+				rotate_lhand(1, body1.x.baseVal.value, body1.y.baseVal.value+25, -1, lhand1);
+
+			else // set values to default
+
+			{
+				byebyeHandFlag1 = 0;
+
+				byebyeWaveCount1 = 75;
+
+				return;
+
+			}
+
+		}
+
+			
+
+		requestAnimationFrameID = window.requestAnimationFrame(hi2);
+
+	}
 	
 
 	function walk2() {

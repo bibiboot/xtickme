@@ -12,7 +12,7 @@
   <script src="js/test2.js" type="text/javascript" ></script>
   <script src="js/engine.js" type="text/javascript" ></script>
 </head>
-<body onload="javascript:load()">
+<body onLoad="javascript:load()">
   <script src="js/chatx.js" type="text/javascript"></script>
   <h1 id="logo">XtickMe</h1>
  
@@ -37,7 +37,7 @@
         </g>
         <g id="body">
           <line x1="0" y1="0" x2="0" y2="100" class="body"/> <!--Body-->        
-          <!--<path d="M0 100 L102 150 L-102 150 L0 100" class="body"/> <!--Body-->  -->
+          <!--<path d="M0 100 L102 150 L-102 150 L0 100" class="body"/> <!--Body-->  -->      
         </g>
         <g id="lhand">
           <line x1="0" y1="0" x2="-50" y2="50" class="hand"/> <!--Hand-->        
@@ -276,11 +276,11 @@
 
   <div id="box">
       <input type="button" id="datasend" value="send" />
-      <textarea rows="2" cols="50" id="data" class="searchbox" onfocus="true"></textarea>
+      <textarea rows="2" cols="50" id="data" class="searchbox" onFocus="true"></textarea>
   </div>
 
   <div id="login">
-    <input type="textbox" value="" placeholder="Enter chat name...." onfocus="true" id="uname"/>
+    <input type="textbox" value="" placeholder="Enter chat name...." onFocus="true" id="uname"/>
     <a href="javascript:add_user();" id="add_but">Add</a>
   </div>
   <div id="cover"></div>

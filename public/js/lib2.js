@@ -156,6 +156,14 @@
 	  rthigh1.y.baseVal.value = rthigh1_y;
 	  rthigh1.transform.baseVal.getItem(0).setRotate(rthigh1.currentTheta, rthigh1_x, rthigh0_y);
 	  
+	  $("#z1_0").css('display','none');
+	  $("#z2_0").css('display','none');
+	  $("#z3_0").css('display','none');
+	  $('#questionMark0').css('display','none');
+	  $('#heart0').css('display','none');
+	  $('#mouth0').css('display','none');
+	  $('#mouth1').css('display','none');
+	  
 	}
 	
     function resetall(){

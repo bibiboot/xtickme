@@ -771,7 +771,8 @@
 	function why() // show question mark
 
 	{	
-
+		//$('#questionMark0').show('slow');
+		$("#questionMark0").css('display','block');
 		if(questionMarkFlag0 == 1) // magnify
 
 		{	
@@ -891,7 +892,68 @@
 		requestAnimationFrameID = window.requestAnimationFrame(byebye);
 
 	}
+	
+	function hi(){	
+		if(byebyeHandFlag0 == 0)	//raise the left hand
 
+		{
+
+			if(lhand0.currentTheta >= 0)
+
+				rotate_lhand(1, body0.x.baseVal.value, body0.y.baseVal.value+25, 1, lhand0);
+
+			if(lhand0.currentTheta >= 85)
+
+			{
+
+				byebyeHandFlag0 = -1;
+
+			}
+
+		}
+
+		else if(byebyeWaveCount0-- >= 0 && (byebyeHandFlag0 == 1 || byebyeHandFlag0 == -1)) //wave hand
+
+		{
+
+			if(lhand0.currentTheta >= 85)
+
+    			byebyeHandFlag0 = -1;
+
+    		if(lhand0.currentTheta <= 60)
+
+				byebyeHandFlag0 = 1;
+
+    		rotate_lhand(2, lhand0.x.baseVal.value, lhand0.y.baseVal.value, byebyeHandFlag0, lhand0);
+
+		}
+
+		else // put down the hand
+
+		{
+
+			if(lhand0.currentTheta != 0)
+
+				rotate_lhand(1, body0.x.baseVal.value, body0.y.baseVal.value+25, -1, lhand0);
+
+			else // set values to default
+
+			{
+				byebyeHandFlag0 = 0;
+
+				byebyeWaveCount0 = 75;
+
+				return;
+
+			}
+
+		}
+
+			
+
+		requestAnimationFrameID = window.requestAnimationFrame(hi);
+
+	}
 	
 
 	function walk() {
