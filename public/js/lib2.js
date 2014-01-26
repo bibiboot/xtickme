@@ -100,4 +100,60 @@
       rthigh.x.baseVal.value += walkDirection*s2d(velocity)*cos(rthigh.currentTheta);
       rthigh.y.baseVal.value += walkDirection*s2d(velocity)*(-sin(rthigh.currentTheta));
     }
-
+	
+	function resetPosition()
+	{
+	  	window.cancelAnimationFrame(requestAnimationFrameID);
+		//reset user1
+		head0.currentTheta = constants.initialTheta;
+		head0.x.baseVal.value = head0_x;
+		head0.y.baseVal.value = head0_y;
+		head0.transform.baseVal.getItem(0).setRotate(head0.currentTheta, head0_x, head0_y);
+	  body0.currentTheta = constants.initialTheta;
+	  body0.x.baseVal.value = body0_x;
+	  body0.y.baseVal.value = body0_y;
+	  body0.transform.baseVal.getItem(0).setRotate(body0.currentTheta, body0_x, body0_y);
+	  lhand0.currentTheta = constants.initialTheta;
+	  lhand0.x.baseVal.value = lhand0_x;
+	  lhand0.y.baseVal.value = lhand0_y;
+	  lhand0.transform.baseVal.getItem(0).setRotate(lhand0.currentTheta, lhand0_x, lhand0_y);
+	  rhand0.currentTheta = constants.initialTheta;
+	  rhand0.x.baseVal.value = rhand0_x;
+	  rhand0.y.baseVal.value = rhand0_y;
+	  rhand0.transform.baseVal.getItem(0).setRotate(rhand0.currentTheta, rhand0_x, rhand0_y);
+	  lthigh0.currentTheta = constants.initialTheta;
+	  lthigh0.x.baseVal.value = lthigh0_x;
+	  lthigh0.y.baseVal.value = lthigh0_y;
+	  lthigh0.transform.baseVal.getItem(0).setRotate(lthigh0.currentTheta, lthigh0_x, lthigh0_y);
+	  rthigh0.currentTheta = constants.initialTheta;
+	  rthigh0.x.baseVal.value = rthigh0_x;
+	  rthigh0.y.baseVal.value = rthigh0_y;
+	  rthigh0.transform.baseVal.getItem(0).setRotate(rthigh0.currentTheta, rthigh0_x, rthigh0_y);
+	  
+	  	//reset user2
+	  head1.currentTheta = constants.initialTheta;	
+	  head1.x.baseVal.value = head1_x;
+	  head1.y.baseVal.value = head1_y;
+	  head1.transform.baseVal.getItem(0).setRotate(head1.currentTheta, head1_x, head1_y);
+	  body1.currentTheta = constants.initialTheta;
+	  body1.x.baseVal.value = body1_x;
+	  body1.y.baseVal.value = body1_y;
+	  body1.transform.baseVal.getItem(0).setRotate(body1.currentTheta, body1_x, body1_y);
+	  lhand1.currentTheta = constants.initialTheta;
+	  lhand1.x.baseVal.value = lhand1_x;
+	  lhand1.y.baseVal.value = lhand1_y;
+	  lhand1.transform.baseVal.getItem(0).setRotate(lhand1.currentTheta, lhand1_x, lhand1_y);
+	  rhand1.currentTheta = constants.initialTheta;
+	  rhand1.x.baseVal.value = rhand1_x;
+	  rhand1.y.baseVal.value = rhand1_y;
+	  rhand1.transform.baseVal.getItem(0).setRotate(rhand1.currentTheta, rhand1_x, rhand1_y);
+	  lthigh1.currentTheta = constants.initialTheta;
+	  lthigh1.x.baseVal.value = lthigh1_x;
+	  lthigh1.y.baseVal.value = lthigh1_y;
+	  lthigh1.transform.baseVal.getItem(0).setRotate(lthigh1.currentTheta, lthigh1_x, lthigh1_y);
+	  rthigh1.currentTheta = constants.initialTheta;
+	  rthigh1.x.baseVal.value = rthigh1_x;
+	  rthigh1.y.baseVal.value = rthigh1_y;
+	  rthigh1.transform.baseVal.getItem(0).setRotate(rthigh1.currentTheta, rthigh1_x, rthigh0_y);
+	  
+	}

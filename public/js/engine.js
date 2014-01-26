@@ -30,6 +30,10 @@
                 else if(eventid == 'walk'){
                         walk_engine(user);
                 }
+				else if(eventid == 'resetposition')
+				{
+						resetposition_engine(user);
+				}
 		//----------Kang Wang------------//
 
 		else if(eventid== 'jump'){
@@ -237,6 +241,12 @@
         }
 
     }
+	
+	function resetposition_engine(user)
+	{
+		//window.requestAnimationFrame(resetPosition);
+		resetPosition();
+	}
 
      function jump_engine(user){
 
