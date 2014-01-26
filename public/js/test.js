@@ -184,24 +184,33 @@
                   rotate_lhand(1, lcx, lcy, -1, lhand0);
                   rotate_lthigh(1, ltcx, ltcy, -1, lthigh0);
                   rotate_rthigh(-1, rtcx, rtcy, -1, rthigh0);
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello);}
+                  //requestAnimationFrameID = window.requestAnimationFrame(Hello);
+				  }
           //adduct the hands
           else if(Hello_inc>45 && Hello_inc<90){
                   Hello_inc++;
                   rotate_lhand(1, lcx, lcy, -1, lhand0);
                   //rotate_lthigh(1, ltcx, ltcy, -1);
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello);}
+                  //requestAnimationFrameID = window.requestAnimationFrame(Hello);
+				  }
           //bend body
           else if(Hello_inc>=90 && Hello_inc<91){
                   Hello_inc++;
                   lhand0.y.baseVal.value = lthigh0.y.baseVal.value - 75*sin(body0.currentTheta);
                   lhand0.x.baseVal.value = lthigh0.x.baseVal.value + 75*cos(body0.currentTheta);
-                  bend();
-                  requestAnimationFrameID = window.requestAnimationFrame(Hello);}
-		  else if(Hello_inc==91){
+                  console.log("bend don't run");
+				  bend();
+				  console.log("bend run");
+                  //requestAnimationFrameID = window.requestAnimationFrame(Hello);
+				  }
+		  else if(Hello_inc++==300){
+			  console.log(Hello_inc);
 			  resetall();
 			  resetPosition();
+			  return;
 			  }
+			  requestAnimationFrameID = window.requestAnimationFrame(Hello);
+
     }
 
     function bend_for_sorry() {
@@ -960,7 +969,8 @@
 
 		  //rotate_rhand(1, lcx, lcy, 1);
 
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}
+		  //requestAnimationFrameID = window.requestAnimationFrame(sorry);
+		  }
 
 	  else if(sorry_inc>=45 && sorry_inc<90){
 
@@ -972,7 +982,8 @@
 
 		   //rotate_rthigh(-1, rtcx, rtcy, -1, rthigh0);
 
-		   requestAnimationFrameID = window.requestAnimationFrame(sorry);}
+		   //requestAnimationFrameID = window.requestAnimationFrame(sorry);
+		   }
 
 	  else if(sorry_inc>=90 && sorry_inc<135){
 
@@ -980,7 +991,8 @@
 
 		  //rotate_rthigh(-1, rtcx, rtcy, -1, rthigh0);
 
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}
+		  //requestAnimationFrameID = window.requestAnimationFrame(sorry);
+		  }
 
 	  else if(sorry_inc>=135 && sorry_inc<136){
 
@@ -992,11 +1004,14 @@
 
 		  bend_for_sorry();
 
-		  requestAnimationFrameID = window.requestAnimationFrame(sorry);}
-	  else if(sorry_inc==136){
+		  //requestAnimationFrameID = window.requestAnimationFrame(sorry);
+		  }
+	  else if(sorry_inc++==300){
 		  resetall();
-		  resetPosition();}
-
+		  resetPosition();
+		  return;}
+		  
+      requestAnimationFrameID = window.requestAnimationFrame(sorry);
 	  /*else if(sorry_inc>=136 && sorry_inc<137){
 
 		  sorry_inc++;
