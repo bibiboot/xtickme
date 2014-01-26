@@ -807,9 +807,9 @@
 	function goodluck() //ring flys out
 
 	{
-                $('#ring0').show('slow');
+                $('#ring1').show('slow');
 
-		ring1.y.baseVal.value -= 5*s2d(velocity1);
+		ring1.y.baseVal.value -= s2d(velocity1);
 
 		if(ring1.y.baseVal.value <= -150)
 
@@ -875,7 +875,7 @@
 			else // set values to default
 
 			{
-
+				walk();
 				byebyeHandFlag0 = 0;
 
 				byebyeWaveCount0 = 75;
