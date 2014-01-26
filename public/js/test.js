@@ -273,41 +273,60 @@
     }
 
     // rtong
+    var suck_inc=0;
     function suck(){
-        if(flag==false){
-            on_the_knees();
-            incline();
-        } else if (flag==true){
-            lean();
-            shake();
+        if(suck_inc<400){
+            suck_inc++;
+            if(flag==false){
+                on_the_knees();
+                incline();
+            } else if (flag==true){
+                lean();
+                shake();
+            }
+    
+            requestAnimationFrameID = window.requestAnimationFrame(suck);
+        } else {
+            resetall();
+            resetPosition();
         }
-
-        requestAnimationFrameID = window.requestAnimationFrame(suck);
     }
 
     // rtong
     var scale_para=1;
+    var love_inc=1;
     function love(){
-        if(scale_para<1.5){
-            $('#heart0').css('display', 'block');
-            heart0.transform.baseVal.getItem(0).setScale(scale_para,scale_para);
-            scale_para+=0.015;
+        if(love_inc<200){
+            love_inc++;
+            if(scale_para<1.5){
+                $('#heart0').css('display', 'block');
+                heart0.transform.baseVal.getItem(0).setScale(scale_para,scale_para);
+                scale_para+=0.015;
+            } else {
+                scale_para=1;
+                $('#heart0').css('display', 'none');
+            }
+            requestAnimationFrameID = window.requestAnimationFrame(love);
         } else {
-            scale_para=1;
-            $('#heart0').css('display', 'none');
+            resetall();
+            resetPosition();
         }
-        requestAnimationFrameID = window.requestAnimationFrame(love);
     }
 
     // rtong
     function shocked(){
-        if (i%5==0){
-            velocity0=-velocity0;
+        if(i<200){
+            if (i%5==0){
+                velocity0=-velocity0;
+            }
+            move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
+            move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0); 
+            i++;
+            requestAnimationFrameID = window.requestAnimationFrame(shocked);
+        } else {
+            resetall();
+            resetPosition();
         }
-        move_body_h(head0, body0, lhand0, rhand0, lthigh0, rthigh0, velocity0);
-        move_body_v(body0, head0, lhand0, rhand0, lthigh0, rthigh0, velocity0); 
-        i++;
-        requestAnimationFrameID = window.requestAnimationFrame(shocked);
     }
 
     // rtong
@@ -335,7 +354,11 @@
             lean();
             shake();
             fuck_inc = fuck_inc + 1;
-            if(fuck_inc>500) return;
+            if(fuck_inc>200) {
+                resetall();
+                resetPosition();
+                return;
+            }
         }
 
         requestAnimationFrameID = window.requestAnimationFrame(fuck);
@@ -385,73 +408,94 @@
     }
 
     // rtong2
+    var wicked_inc=0;
     function wicked(){
         $('#mouth0').css('display', 'block');
-        if(scale_para<10){
-            mouth0.transform.baseVal.getItem(0).setSkewX(scale_para);
-//            mouth0.transform.baseVal.getItem(0).setSkewY(scale_para);
-            scale_para+=0.3;
+        if(wicked_inc<200){
+            wicked_inc++;
+            if(scale_para<10){
+                mouth0.transform.baseVal.getItem(0).setSkewX(scale_para);
+    //            mouth0.transform.baseVal.getItem(0).setSkewY(scale_para);
+                scale_para+=0.3;
+            } else {
+                scale_para=-scale_para;
+            }
+            requestAnimationFrameID = window.requestAnimationFrame(wicked);
         } else {
-            scale_para=-scale_para;
+            resetall();
+            resetPosition();
         }
-        requestAnimationFrameID = window.requestAnimationFrame(wicked);
     }
 
 
     // rtong2
     var flag_lol=1;
     var scale_para=0.9
+    var lol_inc=0;
     function lol(){
         $('#mouth0').css('display', 'block');
-//        console.log(scale_para);
-        if(scale_para<1.2 && scale_para>0.8){
-            if(flag_lol==1)
-                scale_para+=0.05;
-            else if (flag_lol==-1)
-                scale_para-=0.05;
-            mouth0.transform.baseVal.getItem(0).setScale(1,scale_para);
+        if(lol_inc<200){
+            lol_inc++;
+            if(scale_para<1.2 && scale_para>0.8){
+                if(flag_lol==1)
+                    scale_para+=0.05;
+                else if (flag_lol==-1)
+                    scale_para-=0.05;
+                mouth0.transform.baseVal.getItem(0).setScale(1,scale_para);
+            } else {
+                flag_lol=-flag_lol;
+                scale_para=scale_para+0.05*flag_lol;
+            }
+            fly_lol();
+            requestAnimationFrameID = window.requestAnimationFrame(lol);
         } else {
-            flag_lol=-flag_lol;
-            scale_para=scale_para+0.05*flag_lol;
+            resetall();
+            resetPosition();
         }
-        fly_lol();
-        requestAnimationFrameID = window.requestAnimationFrame(lol);
     }
 
 // rtong2
     var theta=0;
     var drop=0;
     var a=0.1;
+    var sad_inc=0;
     function sad(){
         $('#mouth0').css('display', 'block');
         $('#tear0_0').css('display', 'block');
         $('#tear1_0').css('display', 'block');
         $('#tear2_0').css('display', 'block');
         $('#tear3_0').css('display', 'block');
-        if(theta<6){
-            mouth0.currentTheta += theta;
-            mouth0.transform.baseVal.getItem(0).setRotate(mouth0.currentTheta, xOffset0, 25);
-            theta+=0.1;
+        
+        if(sad_inc<300){
+            sad_inc++;
+            if(theta<6){
+                mouth0.currentTheta += theta;
+                mouth0.transform.baseVal.getItem(0).setRotate(mouth0.currentTheta, xOffset0, 25);
+                theta+=0.1;
+            }
+            if(drop>0)
+                tear0_0.y.baseVal.value+=velocity0/100+a;
+            if(drop>2)
+                tear1_0.y.baseVal.value+=velocity0/100+a;
+            if(drop>4)
+                tear2_0.y.baseVal.value+=velocity0/100+a;
+            if (drop>6)
+                tear3_0.y.baseVal.value+=velocity0/100+a;
+            if (drop>8){
+                drop=0;
+                a=0.1;
+                tear0_0.y.baseVal.value=0;
+                tear1_0.y.baseVal.value=0;
+                tear2_0.y.baseVal.value=0;
+                tear3_0.y.baseVal.value=0;
+            }
+            a+=0.1;
+            drop+=0.1;
+            requestAnimationFrameID = window.requestAnimationFrame(sad);
+        } else {
+            resetall();
+            resetPosition();
         }
-        if(drop>0)
-            tear0_0.y.baseVal.value+=velocity0/100+a;
-        if(drop>2)
-            tear1_0.y.baseVal.value+=velocity0/100+a;
-        if(drop>4)
-            tear2_0.y.baseVal.value+=velocity0/100+a;
-        if (drop>6)
-            tear3_0.y.baseVal.value+=velocity0/100+a;
-        if (drop>8){
-            drop=0;
-            a=0.1;
-            tear0_0.y.baseVal.value=0;
-            tear1_0.y.baseVal.value=0;
-            tear2_0.y.baseVal.value=0;
-            tear3_0.y.baseVal.value=0;
-        }
-        a+=0.1;
-        drop+=0.1;
-        requestAnimationFrameID = window.requestAnimationFrame(sad);
     }
 
     

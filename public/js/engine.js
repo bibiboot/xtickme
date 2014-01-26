@@ -1,5 +1,9 @@
     function engine(eventid, user){
 
+        window.cancelAnimationFrame(requestAnimationFrameID);
+        resetall();
+        resetPosition();
+        
         if(eventid == 'fuck'){
             fuck_engine(user);
         }
